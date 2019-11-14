@@ -1,4 +1,4 @@
-import path from 'path';
+var path = require('path');
 require('dotenv').config();
 var express = require('express');
 const app = express();
