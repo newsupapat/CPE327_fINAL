@@ -67,7 +67,11 @@ class NavbarGlobal extends React.Component {
                   <i className="fas fa-cog"></i>
                 </span>
               </button>
-              <UncontrolledCollapse navbar toggler="#navbar_global">
+              <UncontrolledCollapse
+                navbar
+                toggler="#navbar_global"
+                style={{ position: 'relative', zIndex: 9999 }}
+              >
                 <div className="navbar-collapse-header">
                   <Row>
                     <Col className="collapse-brand" xs="6">
