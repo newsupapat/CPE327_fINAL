@@ -1,26 +1,60 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router, Route, Switch } from 'react-router-dom';
+import history from './history';
+import Loadable from 'react-loadable';
+import styled from 'styled-components';
+import 'semantic-ui-css/semantic.min.css';
+import 'asset/vendor/nucleo/css/nucleo.css';
+import 'asset/scss/argon-design-system-react.scss';
+import 'asset/css/app.css';
 
-function App() {
+// View
+import Loading from 'components/Loading/Loader';
+
+// Core Components
+import Navbar from 'components/Navbars';
+
+import PrivateRoute from './PrivateRoute';
+
+const CenterDiv = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(to bottom right, #070630 0%, #060454 100%);
+  min-height: 100vh;
+  z-index: 9999;
+`;
+
+const HomePage = Loadable({
+  loader: () => import('./views/HomePage'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
+const LoginPage = Loadable({
+  loader: () => import('./views/loginPage'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <Switch>
+        <PrivateRoute
+          path="/"
+          exact
+          component={props => <HomePage {...props} />}
+        />
+        {/* <PrivateRoute path="/login" exact component={LoginPage} /> */}
+        <Route path="/login" exact component={LoginPage} />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
