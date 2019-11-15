@@ -57,12 +57,36 @@
     box-shadow: none;
     background: none;
     padding: 0;
-    width: 30%;
+    width: 40%;
     height: 30%;
     border-radius: .28571429rem;
+    margin-left: 2rem;
 }
 
 .ui.progress .bar {
     background: #01B875;
     border: 3px solid white;
+    border-radius: 20px ;
+}
+
+.ui.red.progress .bar{
+    background-color: #E77C7C;
+}
+
+.ui.relaxed.list:not(.horizontal)>.item:not(:last-child) {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.ui.relaxed.list:not(.horizontal)>.item:not(:first-child) {
+    padding-top: 1rem;
+}
+
+/* .ui.relaxed.list:not(.horizontal)>.item:last-child {
+    padding-bottom: 20rem;
+    padding-top: 1rem;
+} */
+
+.ui.bottom.attached.segment{
+    padding-bottom: 20rem;
 }

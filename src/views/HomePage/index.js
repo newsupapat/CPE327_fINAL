@@ -1,63 +1,113 @@
-import React from 'react';
-import Navbar from 'components/Navbars';
-import { Input, Menu, Segment,List,Image,Grid,Progress } from 'semantic-ui-react';
-import './home.css'
-import logo from 'asset/image/logo.png'
-import profile from 'asset/image/logo512.png'
+import React from "react";
+import Navbar from "components/Navbars";
+import {
+  Input,
+  Menu,
+  Segment,
+  List,
+  Image,
+  Grid,
+  Progress,
+  Header
+} from "semantic-ui-react";
+import "./home.css";
+import logo from "asset/image/logo.png";
+import profile from "asset/image/ProfilePict.png";
 
 export default class MenuExampleTabularOnTop extends React.Component {
-  state = { activeItem: 'bio' }
+  state = { activeItem: "bio" };
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  renderlist = () =>{
-    return [...Array(10).keys()].map(e=> (
-      <List.Item>
-        <Image avatar src={logo} />
-        <List.Content>
-          <List.Header>Snickerdoodle</List.Header>
-          An excellent companion
-        </List.Content>
-      </List.Item>
-    ))
-  }
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  renderlist = () => {
+    return (
+      <>
+        <List.Item>
+          <List.Content floated='right'style={{paddingRight:'1rem'}}>
+          <Header as='h4' color='red' textAlign='right' >คุณติดเงิน</Header>
+          <Header as='h4' color='red' textAlign='right'>100.00 บาท</Header>
+           </List.Content>
+          <Image avatar src="https://picsum.photos/200/300" />
+          <List.Content>
+            <List.Header>Helen</List.Header>
+          </List.Content>
+        </List.Item>
+        <List.Item>
+        <List.Content floated='right'style={{paddingRight:'1rem'}}>
+          <Header as='h4' color='green' textAlign='right' >ติดเงินคุณ</Header>
+          <Header as='h4' color='green' textAlign='right'>500.00 บาท</Header>
+           </List.Content>
+          <Image avatar src="https://picsum.photos/200/300" />
+          <List.Content>
+            <List.Header>Christian</List.Header>
+          </List.Content>
+        </List.Item>
+        <List.Item>
+        <List.Content floated='right'style={{paddingRight:'1rem'}}>
+          <Header as='h4' color='red' textAlign='right' >คุณติดเงิน</Header>
+          <Header as='h4' color='red' textAlign='right'>900.00 บาท</Header>
+           </List.Content>
+          <Image avatar src="https://picsum.photos/200/300" />
+          <List.Content>
+            <List.Header>Daniel</List.Header>
+          </List.Content>
+        </List.Item>
+      </>
+    );
+  };
   render() {
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
 
     return (
-      
       <Navbar>
         <div className="profile">
-        <Progress percent={33} size={"large"} style={{marginBottom: "0px"}} />
-        <Image src={profile} size='medium' circular />
-        <Progress percent={33} size={"large"} style={{marginBottom: "0px"}} />
+          <Progress
+            percent={100}
+            size={"large"}
+            style={{
+              marginBottom: "0px",
+              transform: "rotate(0deg) scaleX(-1)"
+            }}
+            color="red"
+          />
+          <Image
+            src={profile}
+            size="medium"
+            circular
+            style={{ position: "absolute", zIndex: "1" }}
+          />
+          <Progress
+            percent={52}
+            size={"large"}
+            style={{ marginBottom: "0px" }}
+          />
         </div>
-        <Menu attached='top' tabular>
+        <Menu attached="top" tabular>
           <Menu.Item
-            name='bio'
+            name="bio"
             className="fix_column"
-            active={activeItem === 'bio'}
+            active={activeItem === "bio"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='photos'
+            name="photos"
             className="fix_column"
-            active={activeItem === 'photos'}
+            active={activeItem === "photos"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='test'
+            name="test"
             className="fix_column"
-            active={activeItem === 'test'}
+            active={activeItem === "test"}
             onClick={this.handleItemClick}
           />
         </Menu>
 
-        <Segment attached='bottom'>
-            <List celled>
-              {this.renderlist()}
+        <Segment attached="bottom">
+          <List divided relaxed verticalAlign='middle'>
+            {this.renderlist()}
           </List>
         </Segment>
       </Navbar>
-    )
+    );
   }
 }
