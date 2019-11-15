@@ -41,6 +41,14 @@ const LoginPage = Loadable({
     </CenterDiv>
   )
 });
+const NotiPage = Loadable({
+  loader: () => import('./views/notification'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
 const App = () => {
   return (
     <Router history={history}>
@@ -49,6 +57,11 @@ const App = () => {
           path="/"
           exact
           component={props => <HomePage {...props} />}
+        />
+        <PrivateRoute
+          path="/notification"
+          exact
+          component={props => <NotiPage {...props} />}
         />
         {/* <PrivateRoute path="/login" exact component={LoginPage} /> */}
         <Route path="/login" exact component={LoginPage} />
