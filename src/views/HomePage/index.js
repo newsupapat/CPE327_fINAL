@@ -15,7 +15,7 @@ import logo from "asset/image/logo.png";
 import profile from "asset/image/ProfilePict.png";
 
 export default class MenuExampleTabularOnTop extends React.Component {
-  state = { activeItem: "bio" };
+  state = { activeItem: "friend" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   renderlist = () => {
@@ -83,21 +83,24 @@ export default class MenuExampleTabularOnTop extends React.Component {
         </div>
         <Menu attached="top" tabular>
           <Menu.Item
-            name="bio"
+            name="friend"
+            content="เพื่อน"
             className="fix_column"
-            active={activeItem === "bio"}
+            active={activeItem === "friend"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name="photos"
+            name="group"
+            content="กลุ่ม"
             className="fix_column"
-            active={activeItem === "photos"}
+            active={activeItem === "group"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name="test"
+            name="noti"
+            content="แจ้งเตือน"
             className="fix_column"
-            active={activeItem === "test"}
+            active={activeItem === "noti"}
             onClick={this.handleItemClick}
           />
         </Menu>
