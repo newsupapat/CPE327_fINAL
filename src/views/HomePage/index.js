@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "components/Navbars";
+import HomeMenu from "components/HomeMenu";
 import {
   Input,
   Menu,
@@ -81,30 +82,8 @@ export default class MenuExampleTabularOnTop extends React.Component {
             style={{ marginBottom: "0px" }}
           />
         </div>
-        <Menu attached="top" tabular>
-          <Menu.Item
-            name="friend"
-            content="เพื่อน"
-            className="fix_column"
-            active={activeItem === "friend"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="group"
-            content="กลุ่ม"
-            className="fix_column"
-            active={activeItem === "group"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="noti"
-            content="แจ้งเตือน"
-            className="fix_column"
-            active={activeItem === "noti"}
-            onClick={this.handleItemClick}
-          />
-        </Menu>
-
+        <HomeMenu>
+        </HomeMenu>
         <Segment attached="bottom">
           <List divided relaxed verticalAlign='middle'>
             {this.renderlist()}
