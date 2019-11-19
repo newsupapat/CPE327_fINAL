@@ -1,0 +1,26 @@
+.ui.tabular.menu .item {
+    background : #DFF3EC;
+    border-radius: 0.28rem 0.28rem 0 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid transparent;
+    padding: .92857143em 1.42857143em;
+    color: rgba(0,0,0,.87);
+}
+
+.ui.tabular.menu .active.item:hover {
+    background: #fff;
+}
+
+.ui.tabular.menu .item:hover {
+    background : #DFF3EC;
+}
+
+.fix_column{
+    width: 33.333%;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1px;
+}

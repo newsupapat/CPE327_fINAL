@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
 import {Menu} from 'semantic-ui-react'
-
+import './homemenu.css';
 export default class MenuExampleTabular extends Component{
-    state = { activeItem: 'friend' }
+    state = { activeItem: 'friend' } //change page??
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
 
