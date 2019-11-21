@@ -11,6 +11,7 @@ ui.tabular.menu .item:hover {
     justify-content: center;
     margin-bottom: -1px;
 }
+
 .ui[class*="top attached"].menu {
     bottom: 0;
     margin-bottom: 0;

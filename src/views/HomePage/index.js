@@ -82,29 +82,9 @@ export default class MenuExampleTabularOnTop extends React.Component {
             style={{ marginBottom: "0px" }}
           />
         </div>
-        <Menu attached="top" tabular>
-          <Menu.Item
-            name="เพื่อน"
-            className="fix_column"
-            active={activeItem === "friend"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="กลุ่ม"
-            className="fix_column"
-            active={activeItem === "photos"}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="แจ้งเตือน"
-            className="fix_column"
-            active={activeItem === "noti"}
-            style={{backgroundColor: activeItem === "noti" ?"white" :null}}
-            onClick={this.handleItemClick}
-          />
-        </Menu>
-
-        <Segment attached="bottom" style={{height:'100vh'}}>
+        <HomeMenu>
+        </HomeMenu>
+        <Segment attached="bottom">
           <List divided relaxed verticalAlign='middle'>
             {this.renderlist()}
           </List>
