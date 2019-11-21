@@ -7,7 +7,7 @@ import Step2 from './segment/step2';
 import Step3 from './segment/step3';
 export default class MenuExampleTabularOnTop extends React.Component {
   state = {
-    currentStep: 3,
+    currentStep: 1,
     step1: null,
     friend: [],
   };
