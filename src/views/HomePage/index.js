@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "components/Navbars";
+import HomeMenu from "components/HomeMenu";
 import {
   Input,
   Menu,
