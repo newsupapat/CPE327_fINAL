@@ -1,4 +1,18 @@
-ui.tabular.menu .item:hover {
+
+label { 
+    padding: 30px 30px;
+    background: silver;
+  }
+  label > input[type=file] {
+      display: none;
+  }
+  .tabbar {
+      text-decoration: underline;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+  }
+  ui.tabular.menu .item:hover {
     background-color: white;
     color: rgba(0,0,0,.8);
 }

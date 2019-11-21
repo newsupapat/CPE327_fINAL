@@ -20,11 +20,7 @@ import { connect } from 'react-redux';
 import { DestroyUser } from 'actions/index';
 
 class NavbarGlobal extends React.Component {
-  componentDidMount() {
-    const headroom = new Headroom(document.getElementById('navbar-main'));
-    // initialise
-    headroom.init();
-  }
+  componentDidMount() {}
 
   render() {
     return (

@@ -15,7 +15,7 @@ import logo from "asset/image/logo.png";
 import profile from "asset/image/ProfilePict.png";
 
 export default class MenuExampleTabularOnTop extends React.Component {
-  state = { activeItem: "bio" };
+  state = { activeItem: "friend" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   renderlist = () => {
@@ -73,7 +73,7 @@ export default class MenuExampleTabularOnTop extends React.Component {
             src={profile}
             size="medium"
             circular
-            style={{ position: "absolute", zIndex: "1" }}
+            style={{ position: "absolute", zIndex: "1","maxWidth": '100px' }}
           />
           <Progress
             percent={52}
@@ -83,26 +83,27 @@ export default class MenuExampleTabularOnTop extends React.Component {
         </div>
         <Menu attached="top" tabular>
           <Menu.Item
-            name="bio"
+            name="เพื่อน"
             className="fix_column"
-            active={activeItem === "bio"}
+            active={activeItem === "friend"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name="photos"
+            name="กลุ่ม"
             className="fix_column"
             active={activeItem === "photos"}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name="test"
+            name="แจ้งเตือน"
             className="fix_column"
-            active={activeItem === "test"}
+            active={activeItem === "noti"}
+            style={{backgroundColor: activeItem === "noti" ?"white" :null}}
             onClick={this.handleItemClick}
           />
         </Menu>
 
-        <Segment attached="bottom">
+        <Segment attached="bottom" style={{height:'100vh'}}>
           <List divided relaxed verticalAlign='middle'>
             {this.renderlist()}
           </List>
