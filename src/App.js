@@ -58,6 +58,14 @@ const GroupPage = Loadable({
     </CenterDiv>
   )
 });
+const BillDetail = Loadable({
+  loader: () => import('./views/BillDetail'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
 const App = () => {
   return (
     <Router history={history}>
@@ -76,6 +84,11 @@ const App = () => {
           path="/addGroup"
           exact
           component={props => <GroupPage {...props} />}
+        />
+        <PrivateRoute
+          path="/billdetail"
+          exact
+          component={props => <BillDetail {...props} />}
         />
         {/* <PrivateRoute path="/login" exact component={LoginPage} /> */}
         <Route path="/login" exact component={LoginPage} />
