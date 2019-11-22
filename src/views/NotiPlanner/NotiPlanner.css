@@ -1,0 +1,98 @@
+.ui.tabular.menu .item {
+    width: 50%;
+}
+
+h2, .h2 {
+    font-size: 3rem;
+    margin: 1rem 3rem;
+    color: white;
+}
+
+
+h3, .h3 {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    color: #01B875;
+}
+
+.ui.red.button{
+    background-color: #E77C7C;
+    position: absolute;
+    top: 11rem;
+    right: 3rem;
+    z-index: 1;
+}
+
+.ui.cards>.card {
+    display: flex;
+    margin: 2em .5em .5em .5em; 
+    float: none;
+}
+
+.ui.card>.content, .ui.cards>.card>.content {
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid rgba(34,36,38,.1);
+    background: 0 0;
+    margin: 0em;
+    padding: 1em 1em;
+    box-shadow: none;
+    font-size: 1em;
+    height: 3rem;
+    border-radius: 0;
+}
+
+.ui.red.label, .ui.red.labels .label {
+    background-color: #db2828!important;
+    border-color: #db2828!important;
+    color: #fff!important;
+}
+
+.ui.ribbon.label {
+    left: calc(-1rem - 1.2em);
+    padding-left: 2rem;
+    padding-right: 2em;
+    position: relative;
+    border-radius: 4px;
+    margin-left: 3rem;
+    margin-right: -1.2em;
+    margin-bottom: -2rem;
+    margin-top: 1rem;
+}
+
+.ui.card>.content>.header, .ui.cards>.card>.content>.header{
+    font-weight: 100;
+}
+
+.ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not(.ui){
+    font-weight: 100;
+}
+
+.ui.attached:not(.message)+.ui.attached.segment:not(.top) {
+    border-top: none;
+    height: 51vh;
+}
+
+.h2.subHeader{
+    padding-top: -1rem;
+}
+
+.ui.attached.segment {
+    top: 0;
+    bottom: 0;
+    border-radius: 8px;
+    margin: 0 -1px;
+    width: calc(100% + 2px);
+    max-width: calc(100% + 2px);
+    box-shadow: none;
+    border: 1px solid #d4d4d5;
+    background: #fff;
+    padding-bottom: 7rem;
+}
+
+.ui.cards>.card {
+    display: flex;
+    margin: 2em .5em .5em .5em;
+    float: none;
+    width: 80%;
+}

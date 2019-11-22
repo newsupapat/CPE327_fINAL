@@ -74,6 +74,14 @@ const BillDetail = Loadable({
     </CenterDiv>
   )
 });
+const NotiPlanner = Loadable({
+  loader: () => import('./views/NotiPlanner'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
 const App = () => {
   return (
     <Router history={history}>
@@ -102,6 +110,11 @@ const App = () => {
           path="/addbill"
           exact
           component={props => <Bill {...props} />}
+        />
+        <PrivateRoute
+          path="/notiplanner"
+          exact
+          component={props => <NotiPlanner {...props} />}
         />
         {/* <PrivateRoute path="/login" exact component={LoginPage} /> */}
         <Route path="/login" exact component={LoginPage} />
