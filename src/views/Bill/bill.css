@@ -1,4 +1,31 @@
-h1.ui.header
+h1
 {
     color:#fff;
+    margin: 1rem 3rem;
+}
+
+h4
+{
+    color: rgba(0,0,0,.87)
+}
+
+.ui.segment
+{
+    Height: 100vh;
+    border-radius: 20px;
+    margin: 0rem 0;
+}
+
+.ui.selection.dropdown
+{
+    background : whitesmoke;
+}
+
+#segment2
+{
+    position : absolute;
+    Height: 10vh;
+    border-radius: 20px;
+    margin: 0rem 0;
+    background : black;
 }
