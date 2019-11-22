@@ -1,33 +1,136 @@
 {
   "groups": [
     {
-      "title": "My Stream",
-      "description": "This is a great stream.",
+      "activeItem": "tour",
+      "friend": [
+        {
+          "id": 1,
+          "name": "new",
+          "select": true
+        },
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        },
+        {
+          "id": 3,
+          "name": "test",
+          "select": true
+        }
+      ],
+      "imagePreviewUrl": null,
+      "name": "เคเอฟซี",
+      "pool": "1212",
+      "detail": null,
       "id": 1
     },
     {
-      "title": "Other Stream",
-      "description": "Here's some stream",
+      "activeItem": "tour",
+      "friend": [
+        {
+          "id": 1,
+          "name": "new",
+          "select": true
+        },
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        },
+        {
+          "id": 3,
+          "name": "test",
+          "select": true
+        }
+      ],
+      "imagePreviewUrl": null,
+      "name": "เคเอฟซี",
+      "pool": "1212",
+      "detail": "1221",
       "id": 2
     },
     {
-      "title": "Me Streaming Component Reuse!",
-      "description": "This stream is about refactoring!!!",
-      "id": 4
+      "activeItem": "tour",
+      "friend": [
+        {
+          "id": 1,
+          "name": "new",
+          "select": true
+        },
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        },
+        {
+          "id": 3,
+          "name": "test",
+          "select": true
+        }
+      ],
+      "imagePreviewUrl": null,
+      "name": "เคเอฟซี",
+      "pool": "1212",
+      "detail": "1221",
+      "id": 3
     },
     {
-      "title": "newsupapat",
-      "description": "Test database",
-      "userId": "109405278939308079747",
-      "id": 5
+      "activeItem": "tour",
+      "friend": [
+        {
+          "id": 1,
+          "name": "new",
+          "select": true
+        },
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        },
+        {
+          "id": 3,
+          "name": "test",
+          "select": true
+        }
+      ],
+      "imagePreviewUrl": null,
+      "name": "เคเอฟซี",
+      "pool": "1212",
+      "detail": "1212",
+      "id": 4
     }
   ],
   "friend": [
-    { "id": 1, "name": "new", "select": false },
-    { "id": 2, "name": "rose", "select": false },
-    { "id": 3, "name": "kat", "select": false },
-    { "id": 4, "name": "newsquaz", "select": false },
-    { "id": 5, "name": "rose wishdom", "select": false },
-    { "id": 6, "name": "rose kub", "select": false }
+    {
+      "id": 1,
+      "name": "new",
+      "select": false
+    },
+    {
+      "id": 2,
+      "name": "rose",
+      "select": false
+    },
+    {
+      "id": 3,
+      "name": "kat",
+      "select": false
+    },
+    {
+      "id": 4,
+      "name": "newsquaz",
+      "select": false
+    },
+    {
+      "id": 5,
+      "name": "rose wishdom",
+      "select": false
+    },
+    {
+      "id": 6,
+      "name": "rose kub",
+      "select": false
+    }
   ]
 }

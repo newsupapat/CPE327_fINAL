@@ -12,14 +12,43 @@ import {
   Header
 } from "semantic-ui-react";
 import "./home.css";
+import axios from 'axios.js'
 import logo from "asset/image/logo.png";
 import profile from "asset/image/ProfilePict.png";
 
-export default class MenuExampleTabularOnTop extends React.Component {
-  state = { activeItem: "friend" };
-
+export default class Homepage extends React.Component {
+  state = { activeItem: "friend",groups:[] };
+  async componentDidMount() {
+    try {
+      let response = await axios.get('/groups')
+      if(response.status === 200){
+        this.setState({
+          groups:response.data
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   renderlist = () => {
+    if(this.state.activeItem === "group"){
+      console.log(this.state.groups)
+      return this.state.groups.map(g => {
+        return(
+        <List.Item key={g.id}>
+          <List.Content floated='right'style={{paddingRight:'1rem'}}>
+            <Header as='h4'  textAlign='right' >เงินกองกลาง</Header>
+        <Header as='h4' color='green' textAlign='right'>{g.pool + '  บาท'}</Header>
+          </List.Content>
+          <Image avatar src="https://picsum.photos/200/300" />
+          <List.Content>
+            <List.Header>{g.name}</List.Header>
+          </List.Content>
+        </List.Item>
+      )
+      })
+    }
     return (
       <>
         <List.Item>
@@ -82,9 +111,30 @@ export default class MenuExampleTabularOnTop extends React.Component {
             style={{ marginBottom: "0px" }}
           />
         </div>
-        <HomeMenu>
-        </HomeMenu>
-        <Segment attached="bottom">
+        <Menu attached="top" tabular>
+          <Menu.Item
+            name="friend"
+            content="เพื่อน"
+            className="fix_column"
+            active={activeItem === "friend"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="group"
+            content="กลุ่ม"
+            className="fix_column"
+            active={activeItem === "group"}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="noti"
+            content="แจ้งเตือน"
+            className="fix_column"
+            active={activeItem === "noti"}
+            onClick={this.handleItemClick}
+          />
+        </Menu>
+        <Segment attached="bottom" style={{height:'80vh'}}>
           <List divided relaxed verticalAlign='middle'>
             {this.renderlist()}
           </List>

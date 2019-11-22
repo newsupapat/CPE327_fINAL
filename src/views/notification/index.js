@@ -3,7 +3,7 @@ import Navbar from 'components/Navbars';
 import { Input, Menu, Segment,List,Image } from 'semantic-ui-react';
 import logo from 'asset/image/logo.png'
 
-export default class MenuExampleTabularOnTop extends React.Component {
+export default class Notification extends React.Component {
   state = { activeItem: 'bio' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })

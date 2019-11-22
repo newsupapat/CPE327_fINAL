@@ -7,70 +7,56 @@ import {
   Image,
   Icon,
   Button,
-  Header
+  Header,
+  Card,
+  Form,
+  TextArea
 } from 'semantic-ui-react';
 import '../group.css';
 import axios from 'axios.js';
+import history from 'history.js';
 import { Container, Row, Col } from 'reactstrap';
 
 const Step3 = ({ currentstep, onsubmit, value }) => {
-  const [activeItem, setactiveItem] = useState('รายชื่อเพื่อน');
-  const [friend, setfriends] = useState([]);
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
-  const handleItemClick = (e, { name }) => {
-    setactiveItem(name);
-  };
-  const addfriendlist = id => {
-    const newfriend = friend.map(f => {
-      if (f.id === id) {
-        return { ...f, select: !f.select };
+  const [pool, setpool] = useState(null);
+  const [detail, setdetail] = useState(null);
+  const submitdata = async () => {
+    const groupAdd = { ...value, pool, detail };
+    try {
+      const response = await axios.post('/groups', groupAdd);
+      if (response.status === 201) {
+        history.push('/');
       }
-      return f;
-    });
-    setfriends(newfriend);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(pool, detail);
   };
-  const sendstateback = () => {
-    onsubmit(friend.filter(f => f.select));
-  };
-  const renderFrindList = () => {
-    return friend.map(fie => {
-      return (
-        <List.Item
-          style={{
-            paddingRight: '1rem',
-            border: '1px solid rgba(34,36,38,.15)',
-            padding: '1em 1em',
-            boxShadow: '0 1px 2px 0 rgba(34,36,38,.15)',
-            borderRadius: '.28571429rem',
-            margin: '2% 0',
-            backgroundColor: fie.select ? '#01B875' : 'white'
-          }}
-        >
-          <List.Content floated="right">
-            <button
-              className={
-                !fie.select
-                  ? 'ui circular icon button positive'
-                  : 'ui circular icon button red'
-              }
-              onClick={e => addfriendlist(fie.id)}
+  const renderFriendlist = () => {
+    return (
+      value &&
+      value.friend.map(f => {
+        return (
+          <Card style={{ width: '50%' }}>
+            <Card.Content style={{ display: 'flex', justifyContent: 'center' }}>
+              <Image
+                size="mini"
+                src="https://picsum.photos/200/200"
+                circular
+                style={{ width: '20%' }}
+              />
+            </Card.Content>
+            <Card.Content
+              extra
+              style={{ display: 'flex', justifyContent: 'center' }}
             >
-              <i
-                aria-hidden="true"
-                className={!fie.select ? 'plus icon' : 'x icon'}
-                style={{ fontSize: '20px' }}
-              ></i>
-            </button>
-          </List.Content>
-          <Image avatar src="https://picsum.photos/200/300" />
-          <List.Content>
-            <List.Header>{fie.name}</List.Header>
-          </List.Content>
-        </List.Item>
-      );
-    });
+              <Card.Header>{f.name}</Card.Header>
+            </Card.Content>
+          </Card>
+        );
+      })
+    );
   };
   if (currentstep !== 3) {
     // Prop: The current step
@@ -91,30 +77,60 @@ const Step3 = ({ currentstep, onsubmit, value }) => {
         </Row>
         <Row>
           <Col>
-            <Input fluid placeholder="ค้นหารายชื่อเพื่อน" />
+            <Card.Group
+              style={{ display: ' -webkit-inline-box', overflowX: 'scroll' }}
+            >
+              {renderFriendlist()}
+            </Card.Group>
           </Col>
         </Row>
       </Container>
       <Segment
         raised
         style={{
-          minHeight: '80vh',
+          minHeight: '70vh',
           borderRadius: '20px'
         }}
       >
-        <h5 style={{ fontWeight: 'bold' }}>เพื่อน</h5>
-        <List relaxed verticalAlign="middle">
-          {renderFrindList()}
-        </List>
-        <Button
-          positive
-          floated="right"
-          style={{ marginTop: '5%' }}
-          disabled={friend.filter(f => f.select).length === 0}
-          onClick={e => sendstateback(e)}
-        >
-          ต่อไป
-        </Button>
+        <h5>รายละเอียด</h5>
+        <div style={{ padding: '10px' }}>
+          <Form>
+            <Form.Field
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '10%'
+              }}
+            >
+              <label style={{ width: '50%' }}>จำนวนเงินกองกลาง</label>
+              <Input
+                placeholder="0"
+                label={{ basic: true, content: 'บาท' }}
+                labelPosition="right"
+                name="pool"
+                value={pool}
+                onChange={e => setpool(e.target.value)}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label style={{ width: '50%' }}>รายละเอียด</label>
+              <TextArea
+                name="details"
+                value={detail}
+                onChange={e => setdetail(e.target.value)}
+              />
+            </Form.Field>
+          </Form>
+          <Button
+            color="red"
+            floated="right"
+            style={{ marginTop: '5%' }}
+            onClick={e => submitdata(e)}
+            disabled={!pool}
+          >
+            เรียบร้อย
+          </Button>
+        </div>
       </Segment>
     </>
   );

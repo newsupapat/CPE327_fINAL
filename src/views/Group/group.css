@@ -1,9 +1,9 @@
 
-label { 
+.picturelabel { 
     padding: 30px 30px;
     background: silver;
   }
-  label > input[type=file] {
+  .picturelabel > input[type=file] {
       display: none;
   }
   .tabbar {
@@ -108,4 +108,7 @@ label {
 
 .ui.bottom.attached.segment{
     padding-bottom: 20rem;
+}
+.cards::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }

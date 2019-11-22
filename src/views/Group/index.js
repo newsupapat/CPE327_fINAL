@@ -5,7 +5,7 @@ import './group.css';
 import Step1 from './segment/step1';
 import Step2 from './segment/step2';
 import Step3 from './segment/step3';
-export default class MenuExampleTabularOnTop extends React.Component {
+export default class Group extends React.Component {
   state = {
     currentStep: 1,
     step1: null,
@@ -43,6 +43,7 @@ export default class MenuExampleTabularOnTop extends React.Component {
                 friend: [
                   { id: 1, name: 'new', select: true },
                   { id: 2, name: 'rose', select: true },
+                  { id: 3, name: 'test', select: true },
                 ],
                 imagePreviewUrl: null,
                 name: 'เคเอฟซี',

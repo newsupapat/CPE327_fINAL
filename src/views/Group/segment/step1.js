@@ -52,7 +52,7 @@ class Step1 extends React.Component {
           <Grid.Row style={{ marginTop: '50px' }}>
             <Grid.Column width={8}>
               <label
-                className='ui button'
+                className='ui button picturelabel'
                 style={{
                   borderRadius: '20%',
                   height: '100%',
