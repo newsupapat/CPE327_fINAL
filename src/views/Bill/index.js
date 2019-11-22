@@ -9,22 +9,20 @@ import { Segment,
         GridRow,
         GridColumn} from 'semantic-ui-react'
 
-=======
-import { Segment, Container, Dropdown } from 'semantic-ui-react';
->>>>>>> 8fb54197179c84196a5e76161dee320bdddfba3b
 
 import './bill.css';
 // import Step1 from './segment/step1';
 // import Step2 from './segment/step2';
 // import Step3 from './segment/step3';
 export default class MenuExampleTabularOnTop extends React.Component {
+
   render() {
     const category = [
       { key: 1, text: 'อาหาร', value: 1 },
       { key: 2, text: 'เสื้อผ้า', value: 2 },
       { key: 3, text: 'เดินทาง', value: 3 },
       { key: 4, text: 'อื่นๆ', value: 4 }
-    ];
+    ]
 
     const friend = [
       { key: 1, text: 'kat', value: 1 },
