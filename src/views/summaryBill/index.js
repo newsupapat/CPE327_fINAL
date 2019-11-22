@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from 'components/Navbars';
-import { Segment, Container, Dropdown, Image, List } from 'semantic-ui-react';
+import {
+  Segment,
+  Container,
+  Dropdown,
+  Image,
+  List,
+  Label,
+  Header
+} from 'semantic-ui-react';
+import { Row, Col } from 'reactstrap';
 import axios from 'axios.js';
 
 const SummaryBill = ({ match }) => {
@@ -21,12 +30,21 @@ const SummaryBill = ({ match }) => {
     return (
       Owner &&
       Owner.detail.map(d => {
+        console.log(d);
         return (
           <List.Item style={{ padding: '20px' }}>
+            <List.Content floated="right" style={{ paddingRight: '1rem' }}>
+              <Header as="h4" color="green" textAlign="right">
+                {d.price + ' บาท'}
+              </Header>
+            </List.Content>
             <List.Content>
               <List.Header as="a">{d.name}</List.Header>
               <List.Description as="a">
-                <Image avatar src="https://picsum.photos/200/300" />
+                {d.friend &&
+                  d.friend.map(f => {
+                    return <Image avatar src="https://picsum.photos/200/300" />;
+                  })}
               </List.Description>
             </List.Content>
           </List.Item>
@@ -54,21 +72,74 @@ const SummaryBill = ({ match }) => {
           /> */}
         </Container>
         <Segment raised style={{ height: '80vh' }}>
-          <h2
-            style={{
-              fontSize: '2rem',
-              color: '#01B875',
-              display: 'flex',
-              justifyContent: 'flex-end'
-            }}
-          >
-            850 บาท
-          </h2>
+          {Owner && (
+            <>
+              <h2
+                style={{
+                  fontSize: '2rem',
+                  color: '#01B875',
+                  display: 'flex',
+                  justifyContent: 'flex-end'
+                }}
+              >
+                {'รวม ' + Owner.amount + ' บาท'}
+              </h2>
+              <Label
+                color={Owner.flag === 'อาหาร' ? 'purple' : 'orange'}
+                ribbon
+                style={{ width: '50%', textAlign: 'center' }}
+              >
+                {Owner.flag}
+              </Label>
+            </>
+          )}
           <List divided relaxed>
             <List.Item style={{ padding: '20px' }}></List.Item>
             {renderlist()}
             <List.Item style={{ padding: '20px' }}></List.Item>
           </List>
+          <Container style={{ textAlign: 'center' }}>
+            <Row>
+              <Col>
+                <h1>สรุป</h1>
+              </Col>
+              <Col></Col>
+            </Row>
+            <Row>
+              <Col></Col>
+              <Col xs={7} style={{ textAlign: 'left' }}>
+                <List selection verticalAlign="middle">
+                  <List.Item>
+                    <Image
+                      avatar
+                      src="https://react.semantic-ui.com/images/avatar/small/helen.jpg"
+                    />
+                    <List.Content>
+                      <List.Header>Helen ยอด 460</List.Header>
+                    </List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <Image
+                      avatar
+                      src="https://react.semantic-ui.com/images/avatar/small/christian.jpg"
+                    />
+                    <List.Content>
+                      <List.Header>Christian ยอด 460</List.Header>
+                    </List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <Image
+                      avatar
+                      src="https://react.semantic-ui.com/images/avatar/small/daniel.jpg"
+                    />
+                    <List.Content>
+                      <List.Header>Daniel ยอด 460 </List.Header>
+                    </List.Content>
+                  </List.Item>
+                </List>
+              </Col>
+            </Row>
+          </Container>
         </Segment>
       </Navbar>
     </div>
