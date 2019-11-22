@@ -58,6 +58,14 @@ const GroupPage = Loadable({
     </CenterDiv>
   )
 });
+const Bill = Loadable({
+  loader: () => import('./views/Bill'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
 const BillDetail = Loadable({
   loader: () => import('./views/BillDetail'),
   loading: () => (
@@ -89,6 +97,11 @@ const App = () => {
           path="/billdetail"
           exact
           component={props => <BillDetail {...props} />}
+        />
+        <PrivateRoute
+          path="/addbill"
+          exact
+          component={props => <Bill {...props} />}
         />
         {/* <PrivateRoute path="/login" exact component={LoginPage} /> */}
         <Route path="/login" exact component={LoginPage} />
