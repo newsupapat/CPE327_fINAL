@@ -15,42 +15,127 @@ import {
   Card,
   Label
 } from "semantic-ui-react";
-import "./BIllDetail.css";
+import "./BillDetail.css";
+import axios from "axios.js";
 import logo from "asset/image/logo.png";
 import profile from "asset/image/ProfilePict.png";
 
 export default class Bill extends React.Component {
-  state = { activeItem: "Debter" };
+  state = { activeItem: "Debter", Owner: [], Debter: [] };
+  async componentDidMount() {
+    try {
+      let response = await axios.get("/Owner");
+      if (response.status === 200) {
+        console.log(response);
+        this.setState({
+          Owner: response.data
+        });
+      }
+      response = await axios.get("/Debter");
+      if (response.status === 200) {
+        console.log(response);
+        this.setState({
+          Debter: response.data
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 
   renderlist = () => {
-    return (
-      <Card.Group>
-        <Label color="purple" ribbon>
-          Food
-        </Label>
-        <Card
-          fluid
-          header="นักเก็ต "
-          style={{ backgroundColor: "#F5F5F5" }}
-        />
-        <Label color="orange" ribbon>
-          Group
-        </Label>
-        <Card
-          fluid
-          header="กางเกง"
-          style={{ backgroundColor: "#F5F5F5"}}
-        />
-        <Label color="green" ribbon>
-          Fashion
-        </Label>
-        <Card
-          fluid
-          header="ทริปพัทยา"
-          style={{ backgroundColor: "#F5F5F5" }}
-        />
-      </Card.Group>
-    );
+    if (this.state.activeItem === "Owner") {
+      console.log(this.state.Owner);
+      return this.state.Owner.map(g => {
+        console.log(g.flag);
+
+        return (
+          <Card.Group>
+            <Label color={g.flag === "อาหาร" ? "purple" : "orange"} ribbon>
+              {g.flag}
+            </Label>
+            <Card
+              fluid
+              style={{ backgroundColor: "#F5F5F5" }}
+              //href="src\views\loginPage\index.js"
+              textAlight="center"
+            >
+              <Card.Content>
+                <Card.Header>{g.name}</Card.Header>
+                <Header
+                  as="h6"
+                  textAlign="left"
+                  style={{ color: "lightgray", marginTop: "0rem" }}
+                >
+                  {g.date}
+                </Header>
+                <Header
+                  as="h4"
+                  color= "green"
+                  textAlign="right"
+                  className="cardDescriptionTop"
+                >
+                  ติดเงินคุณ
+                </Header>
+                <Header
+                  as="h4"
+                  color="green"
+                  textAlign="right"
+                  className="cardDescriptionBottom"
+                >
+                  {g.amount} บาท
+                </Header>
+              </Card.Content>
+            </Card>
+          </Card.Group>
+        );
+      });
+    } else {
+      console.log(this.state.Debter);
+      return this.state.Debter.map(g => {
+        return (
+          <Card.Group>
+            <Label color={g.flag === "อาหาร" ? "purple" : "orange"} ribbon>
+              {g.flag}
+            </Label>
+            <Card
+              fluid
+              style={{ backgroundColor: "#F5F5F5" }}
+              //href="src\views\loginPage\index.js"
+              textAlight="center"
+            >
+              <Card.Content>
+                <Card.Header>{g.name}</Card.Header>
+                <Header
+                  as="h6"
+                  textAlign="left"
+                  style={{ color: "lightgray", marginTop: "0rem" }}
+                >
+                  {g.date}
+                </Header>
+                <Header
+                  as="h4"
+                  color={"red"}
+                  textAlign="right"
+                  className="cardDescriptionTop"
+                >
+                  คุณติดเงิน
+                </Header>
+                <Header
+                  as="h4"
+                  color={g.type === "ติดเงินคุณ" ? "green" : "red"}
+                  textAlign="right"
+                  className="cardDescriptionBottom"
+                >
+                  {g.amount} บาท
+                </Header>
+              </Card.Content>
+            </Card>
+          </Card.Group>
+        );
+      });
+    }
   };
 
   render() {
