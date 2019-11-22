@@ -34,22 +34,7 @@ export default class Group extends React.Component {
         <Step3
           onsubmit={(e) => this.handleSubmitStep2(e)}
           currentstep={this.state.currentStep}
-          value={
-            this.state.currentStep !== 3 ? (
-              { ...this.state.step1, friend: this.state.friend }
-            ) : (
-              {
-                activeItem: 'tour',
-                friend: [
-                  { id: 1, name: 'new', select: true },
-                  { id: 2, name: 'rose', select: true },
-                  { id: 3, name: 'test', select: true },
-                ],
-                imagePreviewUrl: null,
-                name: 'เคเอฟซี',
-              }
-            )
-          }
+          value={{ ...this.state.step1, friend: this.state.friend ,imagePreviewUrl:null}}
         />
       </Navbar>
     );
