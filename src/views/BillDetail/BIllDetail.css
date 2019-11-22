@@ -25,7 +25,7 @@ h3, .h3 {
 
 .ui.cards>.card {
     display: flex;
-    margin: 2em .5em .5em .5em;
+    margin: 2em .5em .5em .5em; 
     float: none;
 }
 
@@ -34,8 +34,8 @@ h3, .h3 {
     border: none;
     border-top: 1px solid rgba(34,36,38,.1);
     background: 0 0;
-    margin: 0;
-    padding: 2em 2rem;
+    margin: 0em;
+    padding: 2em 2em;
     box-shadow: none;
     font-size: 1em;
     height: 5rem;
@@ -58,4 +58,36 @@ h3, .h3 {
     margin-right: -1.2em;
     margin-bottom: -2rem;
     margin-top: 1rem;
+}
+
+.cardDescriptionTop {
+    display: block;
+    margin-bottom: 1rem;
+    padding: 0;
+    position: absolute;
+    right: 1rem;
+    top:-1rem;
+    font-weight: 100;
+}
+
+.cardDescriptionBottom {
+    display: block;
+    margin-top: 0.7rem;
+    padding: 0;
+    position: absolute;
+    right: 1rem;
+    top:1rem;
+}
+
+.ui.card>.content>.header, .ui.cards>.card>.content>.header{
+    font-weight: 100;
+}
+
+.ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not(.ui){
+    font-weight: 100;
+}
+
+.ui.attached:not(.message)+.ui.attached.segment:not(.top) {
+    border-top: none;
+    height: 51vh;
 }
