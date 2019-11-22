@@ -9,12 +9,15 @@ import {
   Image,
   Grid,
   Progress,
-  Header
+  Header,
+  Popup,
+  Button
 } from "semantic-ui-react";
 import "./home.css";
 import axios from 'axios.js'
 import logo from "asset/image/logo.png";
 import profile from "asset/image/ProfilePict.png";
+import { Link } from 'react-router-dom';
 
 export default class Homepage extends React.Component {
   state = { activeItem: "friend",groups:[] };
@@ -34,9 +37,9 @@ export default class Homepage extends React.Component {
   renderlist = () => {
     if(this.state.activeItem === "group"){
       console.log(this.state.groups)
-      return this.state.groups.map(g => {
+      return this.state.groups.map((g,index) => {
         return(
-        <List.Item key={g.id}>
+        <List.Item key={index}>
           <List.Content floated='right'style={{paddingRight:'1rem'}}>
             <Header as='h4'  textAlign='right' >เงินกองกลาง</Header>
         <Header as='h4' color='green' textAlign='right'>{g.pool + '  บาท'}</Header>
@@ -134,10 +137,31 @@ export default class Homepage extends React.Component {
             onClick={this.handleItemClick}
           />
         </Menu>
-        <Segment attached="bottom" style={{height:'80vh'}}>
+        <Segment attached="bottom" style={{height:'100%',paddingBottom:'20px'}}>
           <List divided relaxed verticalAlign='middle'>
             {this.renderlist()}
           </List>
+          <div>
+          <Popup
+        trigger={
+            <Button icon='add' content='เพิ่ม' style={{
+              boxShadow:' 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
+              backgroundColor: 'indianred',
+              color:'white',
+              marginLeft:'75%',
+              marginTop:'25px'
+            }} />
+        }
+        content={<Button.Group vertical>
+          <Button icon='user' content='เพื่อน' primary style={{marginBottom:'20px'}}></Button>
+          <Link to="addgroup">
+          <Button icon='users' content='กลุ่ม' primary></Button>
+          </Link>
+        </Button.Group>}
+        on='click'
+        position='top right'
+      />
+      </div>
         </Segment>
       </Navbar>
     );
