@@ -74,6 +74,14 @@ const BillDetail = Loadable({
     </CenterDiv>
   )
 });
+const SummaryBills = Loadable({
+  loader: () => import('./views/summaryBill'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
 const App = () => {
   return (
     <Router history={history}>
@@ -102,6 +110,11 @@ const App = () => {
           path="/addbill"
           exact
           component={props => <Bill {...props} />}
+        />
+        <Route
+          path="/SummaryBills/:billid"
+          exact
+          component={props => <SummaryBills {...props} />}
         />
         {/* <PrivateRoute path="/login" exact component={LoginPage} /> */}
         <Route path="/login" exact component={LoginPage} />
