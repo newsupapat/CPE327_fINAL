@@ -71,19 +71,6 @@ export default class MenuExampleTabularOnTop extends React.Component {
           </Card>
           </Segment>
         </Navbar>
-=======
-      <Navbar>
-        <h1>สร้างบิล</h1>
-        <Segment raised>
-          <Container>
-            <h4>หมวดหมู่</h4>
-            <hr style={{ backgroundColor: 'red', height: '2px' }}></hr>
-            <Dropdown selection options={options} placeholder="เลือกหมวดหมู่" />
-          </Container>
-          <Segment raised style={{ height: '20vh' }}></Segment>
-        </Segment>
-      </Navbar>
->>>>>>> 8fb54197179c84196a5e76161dee320bdddfba3b
     );
   }
 }
