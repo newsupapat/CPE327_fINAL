@@ -1,4 +1,14 @@
 {
+  "Owner": [
+      {"id":1,"name":"นักเก็ต","flag":"อาหาร","date":"29/11/2019","amount":"100.00"},
+      {"id":2,"name":"กางเกงขาสั้น 3 เมตร","flag":"เสื้อผ้า","date":"10/09/2019","amount":"1,000.00"}
+  ],
+
+  "Debter": [
+    {"id":1,"name":"ไก่ทอด","flag":"อาหาร","date":"10/11/2019","amount":"200.00"},
+    {"id":2,"name":"เสื้อแขนยาว 1 cm","flag":"เสื้อผ้า","date":"21/08/2019","amount":"500.00"}
+  ],
+  
   "groups": [
     {
       "activeItem": "tour",
@@ -149,6 +159,51 @@
       "pool": "5555",
       "detail": null,
       "id": 6
+    },
+    {
+      "imagePreviewUrl": null,
+      "activeItem": "tour",
+      "name": "asdasd",
+      "friend": [
+        {
+          "id": 1,
+          "name": "new",
+          "select": true
+        },
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        },
+        {
+          "id": 3,
+          "name": "kat",
+          "select": true
+        }
+      ],
+      "pool": "5555",
+      "detail": null,
+      "id": 6
+    },
+    {
+      "imagePreviewUrl": null,
+      "activeItem": "dinner",
+      "name": "asdasd",
+      "friend": [
+        {
+          "id": 1,
+          "name": "new",
+          "select": true
+        },
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        }
+      ],
+      "pool": "123123123",
+      "detail": "123123",
+      "id": 7
     }
   ],
   "friend": [
