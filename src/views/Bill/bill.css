@@ -21,11 +21,41 @@ h4
     background : whitesmoke;
 }
 
-#segment2
+.ui.card>:only-child, .ui.cards>.card>:only-child
 {
-    position : absolute;
-    Height: 10vh;
-    border-radius: 20px;
-    margin: 0rem 0;
-    background : black;
+    margin: 10px;
+}
+
+.ui.card, .ui.cards>.card
+{
+    background : whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ui[class*="two column"].grid>.column:not(.row), .ui[class*="two column"].grid>.row>.column
+{
+    width : 34%;
+}
+
+.ui.divided.grid:not([class*="vertically divided"])>.column:not(.row), .ui.divided.grid:not([class*="vertically divided"])>.row>.column
+{
+    box-shadow : 0px 0 0 0 rgba(34,36,38,.15);
+}
+
+.ui.grid>.row
+{
+    padding-top :  0.5em;
+    padding-bottom : 0.5em;
+}
+
+label
+{
+    font-size: 15px;
+    color : dimgray;
+}
+
+input
+{
+    width : 180px;
 }

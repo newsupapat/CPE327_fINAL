@@ -1,7 +1,25 @@
 {
   "Owner": [
-      {"id":1,"name":"นักเก็ต","flag":"อาหาร","date":"29/11/2019","amount":"100.00"},
-      {"id":2,"name":"กางเกงขาสั้น 3 เมตร","flag":"เสื้อผ้า","date":"10/09/2019","amount":"1,000.00"}
+      {"id":1,"name":"นักเก็ต","flag":"อาหาร","date":"29/11/2019","amount":"100.00","detail":[{"id":1,"name":"ไก่ทอด","price":400,"friend":[{
+        "id": 1,
+        "name": "new",
+        "select": false
+      },
+      {
+        "id": 2,
+        "name": "rose",
+        "select": false
+      }]},{"id":2,"name":"ไก่ทอดสั้น","price":400},{"id":3,"name":"ไก่ทอดย้าวยาว","price":400}]},
+      {"id":2,"name":"กางเกงขาสั้น 3 เมตร","flag":"เสื้อผ้า","date":"10/09/2019","amount":"1,000.00","detail":[{"id":1,"name":"ไก่ทอด","price":400,"friend":[{
+        "id": 1,
+        "name": "new",
+        "select": false
+      },
+      {
+        "id": 2,
+        "name": "rose",
+        "select": false
+      }]},{"id":2,"name":"ไก่ทอดสั้น","price":400},{"id":3,"name":"ไก่ทอดย้าวยาว","price":400}]}
   ],
 
   "Debter": [
@@ -159,6 +177,51 @@
       "pool": "5555",
       "detail": null,
       "id": 6
+    },
+    {
+      "imagePreviewUrl": null,
+      "activeItem": "tour",
+      "name": "asdasd",
+      "friend": [
+        {
+          "id": 1,
+          "name": "new",
+          "select": true
+        },
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        },
+        {
+          "id": 3,
+          "name": "kat",
+          "select": true
+        }
+      ],
+      "pool": "5555",
+      "detail": null,
+      "id": 6
+    },
+    {
+      "imagePreviewUrl": null,
+      "activeItem": "dinner",
+      "name": "asdasd",
+      "friend": [
+        {
+          "id": 1,
+          "name": "new",
+          "select": true
+        },
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        }
+      ],
+      "pool": "123123123",
+      "detail": "123123",
+      "id": 7
     }
   ],
   "friend": [
