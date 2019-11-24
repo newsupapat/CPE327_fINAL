@@ -304,6 +304,31 @@
       "pool": "55",
       "detail": null,
       "id": 8
+    },
+    {
+      "imagePreviewUrl": null,
+      "activeItem": "dinner",
+      "name": "dddd",
+      "friend": [
+        {
+          "id": 2,
+          "name": "rose",
+          "select": true
+        },
+        {
+          "id": 3,
+          "name": "kat",
+          "select": true
+        },
+        {
+          "id": 5,
+          "name": "rose wishdom",
+          "select": true
+        }
+      ],
+      "pool": "5555",
+      "detail": "888",
+      "id": 9
     }
   ],
   "friend": [

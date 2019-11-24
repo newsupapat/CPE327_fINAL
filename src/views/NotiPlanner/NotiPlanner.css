@@ -96,3 +96,10 @@ h3, .h3 {
     float: none;
     width: 80%;
 }
+
+.ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not(.ui) {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: -.21425em;
+    line-height: 1.28571429em;
+}

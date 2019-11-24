@@ -140,6 +140,10 @@ export default class Bill extends React.Component {
     }
   };
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
   render() {
     const { activeItem } = this.state;
     return (
