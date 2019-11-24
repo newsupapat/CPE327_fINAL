@@ -56,8 +56,15 @@ const SummaryBill = ({ match }) => {
     <div>
       <Navbar>
         <Container>
-          <h2 style={{ fontSize: '3rem', margin: '1rem 1rem', color: 'white' }}>
-            Loman
+          <h2
+            style={{
+              fontSize: '30px',
+              margin: '1rem 1rem',
+              color: 'white',
+              fontsize: '3.5vw'
+            }}
+          >
+            {Owner && Owner.name}
           </h2>
           {/* <Image
             src={profile}
@@ -71,7 +78,7 @@ const SummaryBill = ({ match }) => {
             }}
           /> */}
         </Container>
-        <Segment raised style={{ height: '80vh' }}>
+        <Segment raised style={{ height: '100%' }}>
           {Owner && (
             <>
               <h2
@@ -93,10 +100,10 @@ const SummaryBill = ({ match }) => {
               </Label>
             </>
           )}
-          <List divided relaxed>
+          <List divided relaxed style={{ marginBottom: '0' }}>
             <List.Item style={{ padding: '20px' }}></List.Item>
             {renderlist()}
-            <List.Item style={{ padding: '20px' }}></List.Item>
+            <List.Item></List.Item>
           </List>
           <Container style={{ textAlign: 'center' }}>
             <Row>

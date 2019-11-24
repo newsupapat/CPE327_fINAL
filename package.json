@@ -7,6 +7,7 @@
     "concurrently": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "formik": "^2.0.6",
     "headroom.js": "^0.10.3",
     "history": "^4.10.1",
     "js-cookie": "^2.2.1",
@@ -30,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "start": "node index.js",
-    "backend":"concurrently \"yarn run dev\"  \"npm start --prefix api\"",
+    "backend": "concurrently \"yarn run dev\"  \"npm start --prefix api\"",
     "eject": "react-scripts eject",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn && yarn run build "
   },

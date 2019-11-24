@@ -18,6 +18,7 @@ import {
 import './BillDetail.css'
 import axios from "axios.js";
 import logo from "asset/image/logo.png";
+import { Link } from 'react-router-dom';
 import profile from "asset/image/ProfilePict.png";
 
 export default class Bill extends React.Component {
@@ -48,9 +49,9 @@ export default class Bill extends React.Component {
     if (this.state.activeItem === "Owner") {
       console.log(this.state.Owner);
       return this.state.Owner.map(g => {
-        console.log(g.flag);
 
         return (
+          <Link to={`/summaryBills/${g.id}`}>
           <Card.Group>
             <Label color={g.flag === "อาหาร" ? "purple" : "orange"} ribbon>
               {g.flag}
@@ -89,6 +90,7 @@ export default class Bill extends React.Component {
               </Card.Content>
             </Card>
           </Card.Group>
+          </Link>
         );
       });
     } else {
@@ -185,7 +187,7 @@ export default class Bill extends React.Component {
             onClick={e => this.setState({ activeItem: "Owner" })}
           />
         </Menu>
-        <Segment attached="bottom">
+        <Segment attached="bottom" style={{height: '60vh'}}>
           <List divided relaxed verticalAlign="middle">
             {this.renderlist()}
           </List>
