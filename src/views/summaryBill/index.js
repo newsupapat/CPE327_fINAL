@@ -3,7 +3,7 @@ import Navbar from 'components/Navbars';
 import {
   Segment,
   Container,
-  Dropdown,
+  Button,
   Image,
   List,
   Label,
@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react';
 import { Row, Col } from 'reactstrap';
 import axios from 'axios.js';
+import billsum from './sumbill.css';
 
 const SummaryBill = ({ match }) => {
   const [Owner, setOwner] = useState(null);
@@ -32,7 +33,7 @@ const SummaryBill = ({ match }) => {
       Owner.detail.map(d => {
         console.log(d);
         return (
-          <List.Item style={{ padding: '20px' }}>
+          <List.Item style={{ padding: '20px'}}>
             <List.Content floated="right" style={{ paddingRight: '1rem' }}>
               <Header as="h4" color="green" textAlign="right">
                 {d.price + ' บาท'}
@@ -144,6 +145,16 @@ const SummaryBill = ({ match }) => {
                     </List.Content>
                   </List.Item>
                 </List>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button inverted color = "red"> แก้ไข
+                </Button>
+              </Col>
+              <Col>
+                <Button> ตกลง
+                </Button>
               </Col>
             </Row>
           </Container>

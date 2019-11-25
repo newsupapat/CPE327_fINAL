@@ -1,0 +1,42 @@
+.ui.list .list>.item a.header, .ui.list>.item a.header
+{
+    color : dimgrey!important;
+}
+
+h1{
+    color : #21ba45;
+}
+
+.ui.list .list>.item .header, .ui.list>.item .header
+{
+    color : #21ba45;
+}
+
+.ui.selection.list .list>.item, .ui.selection.list>.item
+{
+    padding : .5em 0em .7em;
+}
+
+.ui.button
+{
+    background : #21ba45 none;
+    color : #fff;
+}
+
+.ui.button:hover
+{
+    background : #158f31 none;
+    color : #fff;
+}
+
+.ui.button:active
+{
+    background : #13882e none;
+    color : #fff;
+}
+
+.ui.button:focus
+{
+    background : #13882e none;
+    color : #fff;
+}
