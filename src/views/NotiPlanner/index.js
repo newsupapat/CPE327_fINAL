@@ -8,7 +8,7 @@ import {
   List,
   Image,
   Grid,
-  Progress,
+  Component,
   Header,
   Message,
   Button,
@@ -23,6 +23,8 @@ import "./NotiPlanner.css";
 import axios from "axios.js";
 import logo from "asset/image/logo.png";
 import profile from "asset/image/ProfilePict.png";
+import { TimePicker } from "antd";
+import moment from "moment";
 
 const frequency = [
   { key: "d", text: "วัน", value: "day" },
@@ -37,6 +39,8 @@ const number = [
   { key: "5", text: "8 ครั้ง", value: "5" },
   { key: "6", text: "10 ครั้ง", value: "6" }
 ];
+
+const format = "HH:mm";
 
 export default class Bill extends React.Component {
   state = { activeItem: "Owner", Owner: [] };
@@ -126,9 +130,8 @@ export default class Bill extends React.Component {
           </List>
           <h5 style={{ marginLeft: "1rem", marginTop: "2rem" }}>ข้อความ</h5>
           <Form>
-            <TextArea placeholder="รบกวนคืนเงินด้วยนะ" />
+            <TextArea defaultValue="รบกวนคืนเงินด้วยนะ" />
           </Form>
-          {/* <b>{this.state.value}</b>  */}
           <Checkbox
             label="ทำซ้ำ"
             style={{ marginLeft: "1rem", marginTop: "2rem" }}
@@ -141,29 +144,61 @@ export default class Bill extends React.Component {
               <Form>
                 <Form.Group inline>
                   <label>ทุกๆ</label>
-                  <Form.Select fluid options={frequency} placeholder="วัน" />
+                  <Form.Select
+                    fluid
+                    options={frequency}
+                    placeholder="วัน"
+                    style={{ width: "15rem", left: "4rem" }}
+                  />
                 </Form.Group>
                 <Form.Group inline>
                   <label>เตือนซ้ำ</label>
-                  <Form.Select fluid options={number} placeholder="2 ครั้ง" />
+                  <Form.Select
+                    fluid
+                    options={number}
+                    placeholder="2 ครั้ง"
+                    style={{ width: "15rem", left: "2.5rem" }}
+                  />
+                </Form.Group>
+                <Form.Group inline>
+                  <label>เวลา</label>
+                  <Form.Input
+                    fluid
+                    placeholder="09.00"
+                    style={{ width: "15rem", left: "4rem" }}
+                  />
                 </Form.Group>
               </Form>
             </Container>
           ) : null}
+          <Button
+            style={{
+              backgroundColor: "#01B875",
+              color: "#fff",
+              position: "relative",
+              left: "17rem",
+              top: "2rem",
+              marginBottom: "1rem",
+              display: "block"
+            }}
+          >
+            ทวงเงิน
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "transparent",
+              color: "#E77C7C",
+              position: "relative",
+              left: "1rem",
+              top: "-1.5rem",
+              marginBottom: "1rem",
+              display: "block"
+            }}
+          >
+            ยกเลิก
+          </Button>
         </Segment>
 
-        <Button
-          style={{
-            backgroundColor: "#01B875",
-            color: "#fff",
-            position: "absolute",
-            right: "2rem",
-            bottom: "-7rem"
-          }}
-        >
-          ทวงเงิน
-        </Button>
-        {/* <Button style={{backgroundColor: "transparent" ,color:"#E77C7C", position:"absolute",left:"2rem",bottom:"-7rem"}}>ยกเลิก</Button> */}
       </Navbar>
     );
   }
