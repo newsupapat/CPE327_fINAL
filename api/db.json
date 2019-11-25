@@ -330,37 +330,5 @@
       "detail": "888",
       "id": 9
     }
-  ],
-  "friend": [
-    {
-      "id": 1,
-      "name": "new",
-      "select": false
-    },
-    {
-      "id": 2,
-      "name": "rose",
-      "select": false
-    },
-    {
-      "id": 3,
-      "name": "kat",
-      "select": false
-    },
-    {
-      "id": 4,
-      "name": "newsquaz",
-      "select": false
-    },
-    {
-      "id": 5,
-      "name": "rose wishdom",
-      "select": false
-    },
-    {
-      "id": 6,
-      "name": "rose kub",
-      "select": false
-    }
   ]
 }
