@@ -151,7 +151,7 @@ export default class AddBILL extends React.Component {
                               </Row>
                               <Card.Content extra>
                                 <div className='ui two buttons'>
-                                  <Button
+                                  <Button 
                                     basic
                                     color='green'
                                     onClick={() =>
@@ -176,8 +176,9 @@ export default class AddBILL extends React.Component {
                           </div>
                         ))
                       ) : (
-                        <button
-                          type='button'
+                        <Button
+                          basic color = "green"
+                          //type='button'
                           onClick={() =>
                             arrayHelpers.push({
                               name: null,
@@ -186,8 +187,8 @@ export default class AddBILL extends React.Component {
                             })}
                         >
                           {/* show this when user has removed all friends from the list */}
-                          Add a friend
-                        </button>
+                          Add Bill
+                        </Button>
                       )}
                       <div
                         style={{
