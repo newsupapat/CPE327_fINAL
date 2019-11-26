@@ -14,71 +14,87 @@ import {
   Button
 } from "semantic-ui-react";
 import "./home.css";
-import axios from 'axios.js'
+import axios from "axios.js";
 import logo from "asset/image/logo.png";
 import profile from "asset/image/ProfilePict.png";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default class Homepage extends React.Component {
-  state = { activeItem: "friend",groups:[] };
+  state = { activeItem: "friend", groups: [] };
   async componentDidMount() {
     try {
-      let response = await axios.get('/groups')
-      if(response.status === 200){
+      let response = await axios.get("/groups");
+      if (response.status === 200) {
         this.setState({
-          groups:response.data
-        })
+          groups: response.data
+        });
       }
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   renderlist = () => {
-    if(this.state.activeItem === "group"){
-      console.log(this.state.groups)
-      return this.state.groups.map((g,index) => {
-        return(
-        <List.Item key={index}>
-          <List.Content floated='right'style={{paddingRight:'1rem'}}>
-            <Header as='h4'  textAlign='right' >เงินกองกลาง</Header>
-        <Header as='h4' color='green' textAlign='right'>{g.pool + '  บาท'}</Header>
-          </List.Content>
-          <Image avatar src="https://picsum.photos/200/300" />
-          <List.Content>
-            <List.Header>{g.name}</List.Header>
-          </List.Content>
-        </List.Item>
-      )
-      })
+    if (this.state.activeItem === "group") {
+      console.log(this.state.groups);
+      return this.state.groups.map((g, index) => {
+        return (
+          <List.Item key={index}>
+            <List.Content floated="right" style={{ paddingRight: "1rem" }}>
+              <Header as="h4" textAlign="right">
+                เงินกองกลาง
+              </Header>
+              <Header as="h4" color="green" textAlign="right">
+                {g.pool + "  บาท"}
+              </Header>
+            </List.Content>
+            <Image avatar src="https://picsum.photos/200/300" />
+            <List.Content>
+              <List.Header>{g.name}</List.Header>
+            </List.Content>
+          </List.Item>
+        );
+      });
     }
     return (
       <>
         <List.Item>
-          <List.Content floated='right'style={{paddingRight:'1rem'}}>
-          <Header as='h4' color='red' textAlign='right' >คุณติดเงิน</Header>
-          <Header as='h4' color='red' textAlign='right'>100.00 บาท</Header>
-           </List.Content>
+          <List.Content floated="right" style={{ paddingRight: "1rem" }}>
+            <Header as="h4" color="red" textAlign="right">
+              คุณติดเงิน
+            </Header>
+            <Header as="h4" color="red" textAlign="right">
+              100.00 บาท
+            </Header>
+          </List.Content>
           <Image avatar src="https://picsum.photos/200/300" />
           <List.Content>
             <List.Header>Helen</List.Header>
           </List.Content>
         </List.Item>
         <List.Item>
-        <List.Content floated='right'style={{paddingRight:'1rem'}}>
-          <Header as='h4' color='green' textAlign='right' >ติดเงินคุณ</Header>
-          <Header as='h4' color='green' textAlign='right'>500.00 บาท</Header>
-           </List.Content>
+          <List.Content floated="right" style={{ paddingRight: "1rem" }}>
+            <Header as="h4" color="green" textAlign="right">
+              ติดเงินคุณ
+            </Header>
+            <Header as="h4" color="green" textAlign="right">
+              500.00 บาท
+            </Header>
+          </List.Content>
           <Image avatar src="https://picsum.photos/200/300" />
           <List.Content>
             <List.Header>Christian</List.Header>
           </List.Content>
         </List.Item>
         <List.Item>
-        <List.Content floated='right'style={{paddingRight:'1rem'}}>
-          <Header as='h4' color='red' textAlign='right' >คุณติดเงิน</Header>
-          <Header as='h4' color='red' textAlign='right'>900.00 บาท</Header>
-           </List.Content>
+          <List.Content floated="right" style={{ paddingRight: "1rem" }}>
+            <Header as="h4" color="red" textAlign="right">
+              คุณติดเงิน
+            </Header>
+            <Header as="h4" color="red" textAlign="right">
+              900.00 บาท
+            </Header>
+          </List.Content>
           <Image avatar src="https://picsum.photos/200/300" />
           <List.Content>
             <List.Header>Daniel</List.Header>
@@ -106,7 +122,7 @@ export default class Homepage extends React.Component {
             src={profile}
             size="medium"
             circular
-            style={{ position: "absolute", zIndex: "1","maxWidth": '100px' }}
+            style={{ position: "absolute", zIndex: "1", maxWidth: "100px" }}
           />
           <Progress
             percent={52}
@@ -137,31 +153,49 @@ export default class Homepage extends React.Component {
             onClick={this.handleItemClick}
           />
         </Menu>
-        <Segment attached="bottom" style={{height:'100%',paddingBottom:'20px'}}>
-          <List divided relaxed verticalAlign='middle'>
+        <Segment
+          attached="bottom"
+          style={{ height: '67vh',
+            overflow: 'scroll' }}
+        >
+          <List divided relaxed verticalAlign="middle">
             {this.renderlist()}
           </List>
           <div>
-          <Popup
-        trigger={
-            <Button icon='add' content='เพิ่ม' style={{
-              boxShadow:' 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)',
-              backgroundColor: 'indianred',
-              color:'white',
-              marginLeft:'75%',
-              marginTop:'25px'
-            }} />
-        }
-        content={<Button.Group vertical>
-          <Button icon='user' content='เพื่อน' primary style={{marginBottom:'20px'}}></Button>
-          <Link to="addgroup">
-          <Button icon='users' content='กลุ่ม' primary></Button>
-          </Link>
-        </Button.Group>}
-        on='click'
-        position='top right'
-      />
-      </div>
+            <Popup
+              trigger={
+                <Button
+                  icon="add"
+                  content="เพิ่ม"
+                  style={{
+                    boxShadow:
+                      " 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+                    backgroundColor: "indianred",
+                    color: "white",
+                    position: "fixed",
+                    bottom: "50px",
+                    right: "30px",
+                    zIndex: "1"
+                  }}
+                />
+              }
+              content={
+                <Button.Group vertical>
+                  <Button
+                    icon="user"
+                    content="เพื่อน"
+                    primary
+                    style={{ marginBottom: "20px" }}
+                  ></Button>
+                  <Link to="addgroup">
+                    <Button icon="users" content="กลุ่ม" primary></Button>
+                  </Link>
+                </Button.Group>
+              }
+              on="click"
+              position="top right"
+            />
+          </div>
         </Segment>
       </Navbar>
     );

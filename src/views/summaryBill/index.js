@@ -180,6 +180,7 @@ const SummaryBill = ({ match }) => {
                   inverted
                   color="red"
                   style={{
+                    position: "static",
                     marginTop: "3rem",
                     marginBottom: "3rem"
                   }}

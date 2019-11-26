@@ -172,7 +172,7 @@ export default class Bill extends React.Component {
             </Container>
           ) : null}
           <Button
-          color = "green"
+            color="green"
             style={{
               position: "relative",
               left: "17rem",
@@ -184,19 +184,19 @@ export default class Bill extends React.Component {
             ทวงเงิน
           </Button>
           <Button
-          inverted color = "red"
+            inverted
+            color="red"
             style={{
               position: "relative",
-              left: "1rem",
+              left: "2rem",
               top: "-1.5rem",
-              marginBottom: "1rem",
-              display: "block"
+              marginBottom: "1rem"
             }}
+            href="/billdetail"
           >
             ยกเลิก
           </Button>
         </Segment>
-
       </Navbar>
     );
   }

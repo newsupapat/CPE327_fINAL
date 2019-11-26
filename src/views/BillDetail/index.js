@@ -148,7 +148,9 @@ export default class Bill extends React.Component {
     const { activeItem } = this.state;
     return (
       <Navbar>
-        <Button color="red">ทวงเงิน</Button>
+        <Button color="red"
+        href="/notiplanner"
+        >ทวงเงิน</Button>
         <h2>Loman</h2>
         <Image
           src={profile}
