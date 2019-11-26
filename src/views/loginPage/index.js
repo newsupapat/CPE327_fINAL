@@ -10,6 +10,7 @@ import Cookies from 'js-cookie'
 //Redux
 import { UpdateUser } from 'actions'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
     state = {
@@ -110,6 +111,7 @@ class LoginForm extends React.Component {
                     }}
                 >
                     ยังไม่มีบัญชีผู้ใช้งาน?{' '}
+                    <Link to="reg" style={{color : 'white'}}>
                     <span
                     style={{
                         textDecoration: 'underline'
@@ -117,6 +119,7 @@ class LoginForm extends React.Component {
                     >
                     สมัครใช้งาน
                     </span>
+                    </Link>
                 </p>
                 </div>
             </Grid.Column>

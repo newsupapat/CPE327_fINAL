@@ -1,0 +1,19 @@
+.ui.grid>.row
+{
+    padding-left: 2rem;
+}
+.ui.grid>.column:not(.row), .ui.grid>.row>.column
+{
+    width: 35%;
+}
+
+span
+{
+    color: white;
+}
+
+.ui.button
+{
+    margin:0 .25em 0 4.5em;
+    width : 9em;
+}
