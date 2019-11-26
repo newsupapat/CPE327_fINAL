@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from 'components/Navbars';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Row,
+  Col
+} from 'reactstrap';
 import {
   Segment,
   Container,
@@ -10,7 +17,7 @@ import {
   Header,
   Button
 } from 'semantic-ui-react';
-import { Row, Col } from 'reactstrap';
+
 import axios from 'axios.js';
 import billsum from './sumbill.css';
 
@@ -22,8 +29,7 @@ const SummaryBill = ({ match }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/Owner/${match.params.billid}`);
-        console.log(response);
+        const response = await axios.get(`/Bill/${match.params.billid}`);
         setOwner(response.data);
       } catch (error) {
         console.error(error);
@@ -35,9 +41,8 @@ const SummaryBill = ({ match }) => {
     return (
       Owner &&
       Owner.detail.map(d => {
-        console.log(d);
         return (
-          <List.Item style={{ padding: '20px'}}>
+          <List.Item style={{ padding: '20px' }}>
             <List.Content floated="right" style={{ paddingRight: '1rem' }}>
               <Header as="h4" color="green" textAlign="right">
                 {d.price + ' บาท'}
@@ -48,7 +53,13 @@ const SummaryBill = ({ match }) => {
               <List.Description as="a">
                 {d.friend &&
                   d.friend.map(f => {
-                    return <Image avatar src="https://picsum.photos/200/300" />;
+                    console.log(f);
+                    return (
+                      <div>
+                        <Image avatar src="https://picsum.photos/200/300" />{' '}
+                        <p>{f.name}</p>
+                      </div>
+                    );
                   })}
               </List.Description>
             </List.Content>
@@ -71,17 +82,29 @@ const SummaryBill = ({ match }) => {
           >
             {Owner && Owner.name}
           </h2>
-          <Button color="danger" onClick={toggle}>new</Button>
-      <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
-        <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
-        </ModalFooter>
-      </Modal>
+          <Button color="danger" onClick={toggle}>
+            new
+          </Button>
+          <Modal isOpen={modal} toggle={toggle}>
+            <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+            <ModalBody>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" onClick={toggle}>
+                Do Something
+              </Button>{' '}
+              <Button color="secondary" onClick={toggle}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </Modal>
           {/* <Image
             src={profile}
             size="medium"
@@ -164,12 +187,13 @@ const SummaryBill = ({ match }) => {
             </Row>
             <Row>
               <Col>
-                <Button inverted color = "red"> แก้ไข
+                <Button inverted color="red">
+                  {' '}
+                  แก้ไข
                 </Button>
               </Col>
               <Col>
-                <Button> ตกลง
-                </Button>
+                <Button> ตกลง</Button>
               </Col>
             </Row>
           </Container>

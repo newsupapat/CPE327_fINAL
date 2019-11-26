@@ -3,13 +3,19 @@ import Navbar from 'components/Navbars';
 import { Segment, Dropdown, Card, Input, Button } from 'semantic-ui-react';
 import { Container, Row, Col } from 'reactstrap';
 import { Formik, Form, Field, FieldArray } from 'formik';
+import { connect } from 'react-redux';
+import Swal from 'sweetalert2';
 
 import './bill.css';
-export default class AddBILL extends React.Component {
+import axios from 'axios.js';
+import history from 'history.js';
+class AddBILL extends React.Component {
   state = {
     name: null,
     flag: null,
     detail: [{ name: null, price: null, friend: [] }],
+    friendoption: [],
+    submit: false,
   };
   MyInput = ({ field, form, ...props }) => {
     return (
@@ -22,6 +28,58 @@ export default class AddBILL extends React.Component {
       />
     );
   };
+  onsubmit = async (value) => {
+    const { name, flag, submit } = this.state;
+    if (submit) {
+      let d = new Date();
+      this.setState({ submit: false });
+      let amount = value.detail.reduce((a, d) => {
+        return a + d.price;
+      }, 0);
+      console.log(value);
+      let billdetail = {
+        ...value,
+        name,
+        flag,
+        date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`,
+        amount,
+        billowner: this.props.id,
+      };
+      try {
+        let response = await axios.post('/Bill', billdetail);
+        console.log(response);
+        if (response.status === 201) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Save Complete',
+            timer: 2000,
+          }).then((result) => {
+            history.push('/');
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      console.log(value);
+    }
+  };
+  async componentDidMount() {
+    try {
+      let res = await axios.get('/friend');
+      if (res.status === 200) {
+        console.log(res);
+        let friendoption = res.data.map((friend, index) => {
+          return { key: index, text: friend.name, value: friend };
+        });
+        this.setState({
+          friendoption,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   render() {
     const category = [
       { key: 1, text: 'อาหาร', value: 'อาหาร' },
@@ -29,14 +87,6 @@ export default class AddBILL extends React.Component {
       { key: 3, text: 'เดินทาง', value: 'เดินทาง' },
       { key: 4, text: 'อื่นๆ', value: 'อื่นๆ' },
     ];
-
-    const friend = [
-      { key: 1, text: 'kat', value: 1 },
-      { key: 2, text: 'new', value: 2 },
-      { key: 3, text: 'rose', value: 3 },
-      { key: 4, text: 'tangkwa', value: 4 },
-    ];
-
     return (
       <Navbar>
         <h1>สร้างบิล</h1>
@@ -63,9 +113,9 @@ export default class AddBILL extends React.Component {
           <hr style={{ backgroundColor: 'Lightgray', height: '1px' }} />
           <Formik
             initialValues={{
-              detail: [{ name: null, price: null, friend: [] }],
+              detail: [{ name: '', price: '', friend: [] }],
             }}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values) => this.onsubmit(values)}
             render={({ values }) => (
               <Form>
                 <FieldArray
@@ -116,7 +166,7 @@ export default class AddBILL extends React.Component {
                                     name={`detail.${index}.price`}
                                     placeholder='price'
                                     value={d.price}
-                                    type='text'
+                                    type='number'
                                     component={this.MyInput}
                                   />
                                 </Col>
@@ -128,21 +178,22 @@ export default class AddBILL extends React.Component {
                                 <Col xs='8'>
                                   <Field
                                     name='friend'
-                                    render={({ field,form }) => (
+                                    render={({ field, form }) => (
                                       <Dropdown
                                         style={{
                                           backgroundColor: 'white',
                                           width: '106%',
                                           margin: '0px 0px 0px -15px',
                                         }}
-                                        {...field}
                                         onChange={(e, data) =>
-                                          form.setFieldValue(`detail.${index}.friend`, data.value)}
-                                        value={d.friend}
+                                          form.setFieldValue(
+                                            `detail.${index}.friend`,
+                                            data.value
+                                          )}
                                         fluid
                                         multiple
                                         selection
-                                        options={friend}
+                                        options={this.state.friendoption}
                                         placeholder='เลือกเพื่อน'
                                       />
                                     )}
@@ -151,13 +202,13 @@ export default class AddBILL extends React.Component {
                               </Row>
                               <Card.Content extra>
                                 <div className='ui two buttons'>
-                                  <Button 
+                                  <Button
                                     basic
                                     color='green'
                                     onClick={() =>
                                       arrayHelpers.insert(index, {
-                                        name: null,
-                                        price: null,
+                                        name: '',
+                                        price: '',
                                         friend: [],
                                       })}
                                   >
@@ -177,12 +228,13 @@ export default class AddBILL extends React.Component {
                         ))
                       ) : (
                         <Button
-                          basic color = "green"
+                          basic
+                          color='green'
                           //type='button'
                           onClick={() =>
                             arrayHelpers.push({
-                              name: null,
-                              price: null,
+                              name: '',
+                              price: '',
                               friend: [],
                             })}
                         >
@@ -198,8 +250,9 @@ export default class AddBILL extends React.Component {
                         }}
                       >
                         <Button
-                          color='green'
                           type='submit'
+                          color='green'
+                          onClick={(e) => this.setState({ submit: true })}
                           style={{ width: '60%', padding: '5%' }}
                         >
                           ตกลง
@@ -216,3 +269,7 @@ export default class AddBILL extends React.Component {
     );
   }
 }
+const mapStateToprops = (state) => {
+  return { id: state.auth.id };
+};
+export default connect(mapStateToprops, null)(AddBILL);

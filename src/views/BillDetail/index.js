@@ -15,17 +15,18 @@ import {
   Card,
   Label
 } from "semantic-ui-react";
-import './BIllDetail.css'
+import './BillDetail.css'
 import axios from "axios.js";
 import logo from "asset/image/logo.png";
 import { Link } from 'react-router-dom';
 import profile from "asset/image/ProfilePict.png";
+import { connect } from 'react-redux';
 
-export default class Bill extends React.Component {
+ class Bill extends React.Component {
   state = { activeItem: "Debter", Owner: [], Debter: [] };
   async componentDidMount() {
     try {
-      let response = await axios.get("/Owner");
+      let response = await axios.get(`/Bill?billowner=${this.props.id}`);
       if (response.status === 200) {
         console.log(response);
         this.setState({
@@ -200,3 +201,7 @@ export default class Bill extends React.Component {
     );
   }
 }
+const mapStateToprops = (state) => {
+  return { id: state.auth.id };
+};
+export default connect(mapStateToprops, null)(Bill);
