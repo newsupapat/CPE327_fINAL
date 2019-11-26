@@ -3,6 +3,7 @@ import {
   Button,
   Form,
   Grid,
+  Modal,
   Header,
 } from 'semantic-ui-react';
 import history from '../../history.js'
@@ -41,6 +42,7 @@ class LoginForm extends React.Component {
   render() {
       const {errorPaths} = this.state
         return (
+            <>
             <Grid
             textAlign="center"
             style={{
@@ -124,6 +126,16 @@ class LoginForm extends React.Component {
                 </div>
             </Grid.Column>
             </Grid>
+            <Modal
+            defaultOpen
+            size ='tiny'
+            header='Warning'
+                content='Please enter inspect mode(view in mobile size) before visit our Billy'
+                actions={[{ key: 'done', content: 'Got it!', positive: true }]}
+                style ={{height:"25%",marginLeft:"33%",marginTop:"15%"}}
+            />
+            </>
+            
         );
             }
 };

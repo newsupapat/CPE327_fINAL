@@ -15,7 +15,7 @@ import {
   Card,
   Label
 } from "semantic-ui-react";
-import './BIllDetail.css'
+import './BillDetail.css'
 import axios from "axios.js";
 import logo from "asset/image/logo.png";
 import { Link } from 'react-router-dom';

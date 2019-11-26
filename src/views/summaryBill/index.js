@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from 'components/Navbars';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { useEffect, useState } from "react";
+import Navbar from "components/Navbars";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import {
   Segment,
   Container,
@@ -9,10 +9,10 @@ import {
   Label,
   Header,
   Button
-} from 'semantic-ui-react';
-import { Row, Col } from 'reactstrap';
-import axios from 'axios.js';
-import billsum from './sumbill.css';
+} from "semantic-ui-react";
+import { Row, Col } from "reactstrap";
+import axios from "axios.js";
+import billsum from "./sumbill.css";
 
 const SummaryBill = ({ match }) => {
   const [Owner, setOwner] = useState(null);
@@ -37,10 +37,10 @@ const SummaryBill = ({ match }) => {
       Owner.detail.map(d => {
         console.log(d);
         return (
-          <List.Item style={{ padding: '20px'}}>
-            <List.Content floated="right" style={{ paddingRight: '1rem' }}>
+          <List.Item style={{ padding: "20px" }}>
+            <List.Content floated="right" style={{ paddingRight: "1rem" }}>
               <Header as="h4" color="green" textAlign="right">
-                {d.price + ' บาท'}
+                {d.price + " บาท"}
               </Header>
             </List.Content>
             <List.Content>
@@ -63,25 +63,37 @@ const SummaryBill = ({ match }) => {
         <Container>
           <h2
             style={{
-              fontSize: '30px',
-              margin: '1rem 1rem',
-              color: 'white',
-              fontsize: '3.5vw'
+              fontSize: "30px",
+              margin: "1rem 1rem",
+              color: "white",
+              fontsize: "3.5vw"
             }}
           >
             {Owner && Owner.name}
           </h2>
-          <Button color="danger" onClick={toggle}>new</Button>
-      <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
-        <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
-        </ModalFooter>
-      </Modal>
+          <Button color="danger" onClick={toggle}>
+            new
+          </Button>
+          <Modal isOpen={modal} toggle={toggle}>
+            <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+            <ModalBody>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" onClick={toggle}>
+                Do Something
+              </Button>{" "}
+              <Button color="secondary" onClick={toggle}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </Modal>
           {/* <Image
             src={profile}
             size="medium"
@@ -94,34 +106,34 @@ const SummaryBill = ({ match }) => {
             }}
           /> */}
         </Container>
-        <Segment raised style={{ height: '100%' }}>
+        <Segment raised style={{ height: "100%" }}>
           {Owner && (
             <>
-              <h2
+              <h2 
                 style={{
-                  fontSize: '2rem',
-                  color: '#01B875',
-                  display: 'flex',
-                  justifyContent: 'flex-end'
+                  color :"green",
+                  fontSize: "2rem",
+                  display: "flex",
+                  justifyContent: "flex-end"
                 }}
               >
-                {'รวม ' + Owner.amount + ' บาท'}
+                {"รวม " + Owner.amount + " บาท"}
               </h2>
               <Label
-                color={Owner.flag === 'อาหาร' ? 'purple' : 'orange'}
+                color={Owner.flag === "อาหาร" ? "purple" : "orange"}
                 ribbon
-                style={{ width: '50%', textAlign: 'center' }}
+                style={{ width: "50%", textAlign: "center" }}
               >
                 {Owner.flag}
               </Label>
             </>
           )}
-          <List divided relaxed style={{ marginBottom: '0' }}>
-            <List.Item style={{ padding: '20px' }}></List.Item>
+          <List divided relaxed style={{ marginBottom: "0" }}>
+            <List.Item style={{ padding: "20px" }}></List.Item>
             {renderlist()}
             <List.Item></List.Item>
           </List>
-          <Container style={{ textAlign: 'center' }}>
+          <Container style={{ textAlign: "center" }}>
             <Row>
               <Col>
                 <h1>สรุป</h1>
@@ -130,7 +142,7 @@ const SummaryBill = ({ match }) => {
             </Row>
             <Row>
               <Col></Col>
-              <Col xs={7} style={{ textAlign: 'left' }}>
+              <Col xs={7} style={{ textAlign: "left" }}>
                 <List selection verticalAlign="middle">
                   <List.Item>
                     <Image
@@ -164,11 +176,25 @@ const SummaryBill = ({ match }) => {
             </Row>
             <Row>
               <Col>
-                <Button inverted color = "red"> แก้ไข
+                <Button
+                  inverted
+                  color="red"
+                  style={{
+                    marginTop: "3rem",
+                    marginBottom: "3rem"
+                  }}
+                >
+                  แก้ไข
                 </Button>
               </Col>
               <Col>
-                <Button> ตกลง
+                <Button
+                  style={{
+                    marginTop: "3rem",
+                    marginBottom: "3rem"
+                  }}
+                >
+                  ตกลง
                 </Button>
               </Col>
             </Row>
