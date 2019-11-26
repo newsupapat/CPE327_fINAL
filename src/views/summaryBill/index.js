@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from 'components/Navbars';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {
   Segment,
   Container,
   Image,
   List,
   Label,
-  Header
+  Header,
+  Button
 } from 'semantic-ui-react';
 import { Row, Col } from 'reactstrap';
 import axios from 'axios.js';
