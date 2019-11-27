@@ -76,15 +76,3 @@ ui.tabular.menu .item:hover {
 .ui.relaxed.list:not(.horizontal)>.item:not(:first-child) {
     padding-top: 1rem;
 }
-
-/* .ui.relaxed.list:not(.horizontal)>.item:last-child {
-    padding-bottom: 20rem;
-    padding-top: 1rem;
-} */
-
-.ui.bottom.attached.segment{
-    padding-bottom: 20rem;
-}
-/* .ui.popup {
-    padding: 0;
-} */

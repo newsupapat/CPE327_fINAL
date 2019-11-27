@@ -122,8 +122,8 @@ const SummaryBill = ({ match }) => {
             <>
               <h2
                 style={{
+                  color: 'green',
                   fontSize: '2rem',
-                  color: '#01B875',
                   display: 'flex',
                   justifyContent: 'flex-end'
                 }}
@@ -187,13 +187,27 @@ const SummaryBill = ({ match }) => {
             </Row>
             <Row>
               <Col>
-                <Button inverted color="red">
-                  {' '}
+                <Button
+                  inverted
+                  color="red"
+                  style={{
+                    position: 'static',
+                    marginTop: '3rem',
+                    marginBottom: '3rem'
+                  }}
+                >
                   แก้ไข
                 </Button>
               </Col>
               <Col>
-                <Button> ตกลง</Button>
+                <Button
+                  style={{
+                    marginTop: '3rem',
+                    marginBottom: '3rem'
+                  }}
+                >
+                  ตกลง
+                </Button>
               </Col>
             </Row>
           </Container>

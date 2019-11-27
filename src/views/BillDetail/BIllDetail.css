@@ -91,3 +91,9 @@ h3, .h3 {
     border-top: none;
     height: 51vh;
 }
+
+.ui.cards {
+    display: flex;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+}
