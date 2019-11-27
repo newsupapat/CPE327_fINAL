@@ -92,6 +92,14 @@ const SummaryBills = Loadable({
     </CenterDiv>
   )
 });
+const Reg = Loadable({
+  loader: () => import('./views/Regis'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
 const App = () => {
   return (
     <Router history={history}>
@@ -131,6 +139,11 @@ const App = () => {
           path="/SummaryBills/:billid"
           exact
           component={props => <SummaryBills {...props} />}
+        />
+        <Route
+          path="/reg"
+          exact
+          component={props => <Reg {...props} />}
         />
         {/* <PrivateRoute path="/login" exact component={LoginPage} /> */}
         <Route path="/login" exact component={LoginPage} />

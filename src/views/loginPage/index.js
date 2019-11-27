@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import { UpdateUser } from 'actions';
 import { connect } from 'react-redux';
 import axios from 'axios.js';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   state = {
@@ -135,6 +136,16 @@ class LoginForm extends React.Component {
                   }}
                 >
                   ลืมรหัสผ่าน ?
+                    ยังไม่มีบัญชีผู้ใช้งาน?{' '}
+                    <Link to="reg" style={{color : 'white'}}>
+                    <span
+                    style={{
+                        textDecoration: 'underline'
+                    }}
+                    >
+                    สมัครใช้งาน
+                    </span>
+                    </Link>
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
