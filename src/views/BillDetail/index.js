@@ -2,22 +2,19 @@ import React from "react";
 import Navbar from "components/Navbars";
 import HomeMenu from "components/HomeMenu";
 import {
-  Input,
   Menu,
   Segment,
   List,
   Image,
-  Grid,
-  Progress,
   Header,
   Message,
   Button,
   Card,
   Label
 } from "semantic-ui-react";
-import './BillDetail.css'
+import './BIllDetail.css'
 import axios from "axios.js";
-import logo from "asset/image/logo.png";
+//import logo from "asset/image/logo.png";
 import { Link } from 'react-router-dom';
 import profile from "asset/image/ProfilePict.png";
 import { connect } from 'react-redux';

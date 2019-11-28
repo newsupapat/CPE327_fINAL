@@ -166,13 +166,15 @@ class LoginForm extends React.Component {
               }}
             >
               ยังไม่มีบัญชีผู้ใช้งาน?{' '}
-              <span
-                style={{
-                  textDecoration: 'underline',
-                }}
-              >
-                สมัครใช้งาน
-              </span>
+              <Link to="reg" style={{color : 'white'}}>
+                <span
+                  style={{
+                    textDecoration: 'underline',
+                  }}
+                >
+                  สมัครใช้งาน
+                </span>
+              </Link>
             </p>
           </div>
         </Grid.Column>

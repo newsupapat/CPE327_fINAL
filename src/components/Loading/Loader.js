@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './loading.scss';
+//import style from './loading.scss';
 
 const SvgLoad = props => (
   <div className="animation-container">
