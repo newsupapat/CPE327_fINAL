@@ -66,12 +66,16 @@ class AddBILL extends React.Component {
   };
   async componentDidMount() {
     try {
-      let res = await axios.get('/friend');
+      let res = await axios.get(`/friend/?userid=${this.props.id}`);
       if (res.status === 200) {
         console.log(res);
-        let friendoption = res.data.map((friend, index) => {
+        let friendoption = res.data[0].friendlist.map((friend, index) => {
           return { key: index, text: friend.name, value: friend };
         });
+        friendoption.push({key: friendoption.length, text: 'Owner', value: {
+          "userid": this.props.id,
+          "name": this.props.username
+        }})
         this.setState({
           friendoption,
         });
@@ -270,6 +274,6 @@ class AddBILL extends React.Component {
   }
 }
 const mapStateToprops = (state) => {
-  return { id: state.auth.id };
+  return { id: state.auth.id,username:state.auth.username };
 };
 export default connect(mapStateToprops, null)(AddBILL);

@@ -3,356 +3,121 @@
     {
       "detail": [
         {
-          "name": "ไก่ทอด เกาหลี",
-          "price": 200,
+          "name": "ไก่ย่าง",
+          "price": 250,
           "friend": [
             {
-              "id": 1,
-              "name": "new2",
+              "userid": 2,
+              "name": "tangkwa",
               "select": false
             },
             {
-              "id": 2,
-              "name": "rose",
-              "select": false
-            }
-          ]
-        },
-        {
-          "name": "ไก่ทอด",
-          "price": 1,
-          "friend": [
-            {
-              "id": 3,
-              "name": "test",
-              "select": false
+              "userid": 1,
+              "name": "new"
             }
           ]
         }
       ],
       "name": "ไก่ทอดไง",
       "flag": "อาหาร",
-      "date": "27/10/2019",
-      "amount": 201,
+      "date": "28/10/2019",
+      "amount": 250,
       "billowner": 1,
       "id": 1
-    }
-  ],
-  "Owner": [
+    },
     {
-      "id": 1,
-      "name": "นักเก็ต",
-      "flag": "อาหาร",
-      "date": "29/11/2019",
-      "amount": "100.00",
       "detail": [
         {
-          "id": 1,
-          "name": "ไก่ทอด",
-          "price": 400,
+          "name": "ไก่ย่างแตงกวา",
+          "price": 300,
           "friend": [
             {
-              "id": 1,
-              "name": "new",
-              "select": false
+              "userid": 2,
+              "name": "tangkwa"
             },
             {
-              "id": 2,
-              "name": "rose",
+              "userid": 1,
+              "name": "new",
               "select": false
             }
           ]
         },
         {
-          "id": 2,
-          "name": "ไก่ทอดสั้น",
-          "price": 400
-        },
-        {
-          "id": 3,
-          "name": "ไก่ทอดย้าวยาว",
-          "price": 400
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "กางเกงขาสั้น 3 เมตร",
-      "flag": "เสื้อผ้า",
-      "date": "10/09/2019",
-      "amount": "1,000.00",
-      "detail": [
-        {
-          "id": 1,
-          "name": "ไก่ทอด",
-          "price": 400,
+          "name": "ไก่ย่างนิว",
+          "price": 300,
           "friend": [
             {
-              "id": 1,
-              "name": "new",
+              "userid": 2,
+              "name": "tangkwa"
+            },
+            {
+              "userid": 3,
+              "name": "rose",
               "select": false
             },
             {
-              "id": 2,
+              "userid": 1,
+              "name": "new",
+              "select": false
+            }
+          ]
+        }
+      ],
+      "name": "ไก่ย่างแตงกวา",
+      "flag": "อาหาร",
+      "date": "28/10/2019",
+      "amount": 300,
+      "billowner": 2,
+      "id": 1
+    },
+    {
+      "detail": [
+        {
+          "name": "น่องไก่",
+          "price": 80,
+          "friend": [
+            {
+              "name": "tangkwa",
+              "userid": 2,
+              "select": false
+            },
+            {
               "name": "rose",
+              "userid": 3,
               "select": false
             }
           ]
         },
         {
-          "id": 2,
-          "name": "ไก่ทอดสั้น",
-          "price": 400
-        },
-        {
-          "id": 3,
-          "name": "ไก่ทอดย้าวยาว",
-          "price": 400
+          "name": "เนื้อไก่",
+          "price": 250,
+          "friend": [
+            {
+              "name": "new",
+              "userid": 1,
+              "select": false
+            },
+            {
+              "name": "tangkwa",
+              "userid": 2,
+              "select": false
+            }
+          ]
         }
-      ]
-    }
-  ],
-  "Debter": [
-    {
-      "id": 1,
-      "name": "ไก่ทอด",
+      ],
+      "name": "ไก่ย่างวันนั้น",
       "flag": "อาหาร",
-      "date": "10/11/2019",
-      "amount": "200.00"
-    },
-    {
-      "id": 2,
-      "name": "เสื้อแขนยาว 1 cm",
-      "flag": "เสื้อผ้า",
-      "date": "21/08/2019",
-      "amount": "500.00"
+      "date": "28/10/2019",
+      "amount": 330,
+      "billowner": 4,
+      "id": 2
     }
   ],
   "groups": [
     {
-      "activeItem": "tour",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        },
-        {
-          "id": 3,
-          "name": "test",
-          "select": true
-        }
-      ],
-      "imagePreviewUrl": null,
-      "name": "เคเอฟซี",
-      "pool": "1212",
-      "detail": null,
-      "id": 1
-    },
-    {
-      "activeItem": "tour",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        },
-        {
-          "id": 3,
-          "name": "test",
-          "select": true
-        },
-        {
-          "id": 3,
-          "name": "test",
-          "select": true
-        }
-      ],
-      "imagePreviewUrl": null,
-      "name": "เคเอฟซี",
-      "pool": "1212",
-      "detail": "1221",
-      "id": 2
-    },
-    {
-      "activeItem": "tour",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        },
-        {
-          "id": 3,
-          "name": "test",
-          "select": true
-        }
-      ],
-      "imagePreviewUrl": null,
-      "name": "เคเอฟซี",
-      "pool": "1212",
-      "detail": "1221",
-      "id": 3
-    },
-    {
-      "activeItem": "tour",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        },
-        {
-          "id": 3,
-          "name": "test",
-          "select": true
-        }
-      ],
-      "imagePreviewUrl": null,
-      "name": "เคเอฟซี",
-      "pool": "1212",
-      "detail": "1212",
-      "id": 4
-    },
-    {
-      "activeItem": "tour",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        },
-        {
-          "id": 3,
-          "name": "test",
-          "select": true
-        }
-      ],
-      "imagePreviewUrl": null,
-      "name": "เคเอฟซี",
-      "pool": "500",
-      "detail": "new",
-      "id": 5
-    },
-    {
-      "imagePreviewUrl": null,
-      "activeItem": "tour",
-      "name": "asdasd",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        },
-        {
-          "id": 3,
-          "name": "kat",
-          "select": true
-        }
-      ],
-      "pool": "5555",
-      "detail": null,
-      "id": 6
-    },
-    {
-      "imagePreviewUrl": null,
-      "activeItem": "tour",
-      "name": "asdasd",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        },
-        {
-          "id": 3,
-          "name": "kat",
-          "select": true
-        }
-      ],
-      "pool": "5555",
-      "detail": null,
-      "id": 6
-    },
-    {
       "imagePreviewUrl": null,
       "activeItem": "dinner",
-      "name": "asdasd",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        }
-      ],
-      "pool": "123123123",
-      "detail": "123123",
-      "id": 7
-    },
-    {
-      "imagePreviewUrl": null,
-      "activeItem": "tour",
-      "name": "123123123",
-      "friend": [
-        {
-          "id": 1,
-          "name": "new",
-          "select": true
-        },
-        {
-          "id": 2,
-          "name": "rose",
-          "select": true
-        }
-      ],
-      "pool": "55",
-      "detail": null,
-      "id": 8
-    },
-    {
-      "imagePreviewUrl": null,
-      "activeItem": "dinner",
-      "name": "dddd",
+      "name": "เที่ยวตราดต้องกินข้าว",
       "friend": [
         {
           "id": 2,
@@ -377,7 +142,7 @@
     {
       "imagePreviewUrl": null,
       "activeItem": "tour",
-      "name": "1212",
+      "name": "เที่ยวตราด",
       "friend": [
         {
           "id": 1,
@@ -393,29 +158,96 @@
       "pool": "120",
       "detail": "asdasd",
       "id": 10
+    },
+    {
+      "imagePreviewUrl": null,
+      "activeItem": "tour",
+      "name": "new",
+      "friend": [
+        {
+          "name": "new",
+          "userid": 1,
+          "select": true
+        },
+        {
+          "name": "tangkwa",
+          "userid": 2,
+          "select": true
+        }
+      ],
+      "pool": "wewe",
+      "detail": null,
+      "id": 11
     }
   ],
   "friend": [
     {
-      "id": 1,
-      "name": "new2",
-      "select": false
+      "userid": 1,
+      "friendlist": [
+        {
+          "userid": 2,
+          "name": "tangkwa",
+          "select": false
+        },
+        {
+          "name": "rose",
+          "userid": 3,
+          "select": false
+        }
+      ],
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "rose",
-      "select": false
+      "userid": 2,
+      "friendlist": [],
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "test",
-      "select": false
+      "userid": 3,
+      "friendlist": [],
+      "id": 3
+    },
+    {
+      "userid": 4,
+      "friendlist": [
+        {
+          "name": "new",
+          "userid": 1,
+          "select": false
+        },
+        {
+          "name": "tangkwa",
+          "userid": 2,
+          "select": false
+        },
+        {
+          "name": "rose",
+          "userid": 3,
+          "select": false
+        }
+      ],
+      "id": 4
     }
   ],
   "users": [
     {
       "id": 1,
       "username": "new",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "username": "tangkwa",
+      "password": "123456"
+    },
+    {
+      "id": 3,
+      "username": "rose",
+      "password": "123456"
+    },
+    {
+      "id": 4,
+      "username": "kat",
       "password": "123456"
     }
   ]

@@ -9,21 +9,48 @@ import {
   Button,
   Header
 } from 'semantic-ui-react';
-import '../group.css';
+import './group.css';
 import axios from 'axios.js';
+import Navbar from 'components/Navbars/index';
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
+import Swal from 'sweetalert2';
+import history from 'history.js';
 
-const Step2 = ({ currentstep, onsubmit, id }) => {
+const AddFriend = ({ id }) => {
   const [activeItem, setactiveItem] = useState('รายชื่อเพื่อน');
   const [friend, setfriends] = useState([]);
+  const [oldfriend, setoldfriends] = useState([]);
+  const [friendid, setid] = useState(null);
   useEffect(() => {
     async function fetchData() {
+      let friendtemp;
+      try {
+        const response = await axios.get(`/users?id_ne=${id}`);
+        friendtemp = response.data;
+        setfriends(
+          response.data.map(f => {
+            return { ...f, select: false };
+          })
+        );
+      } catch (error) {
+        console.error('cannot create', error);
+      }
       try {
         const response = await axios.get(`/friend?userid=${id}`);
-        setfriends(response.data[0].friendlist);
+        setid(response.data[0].id);
+        setoldfriends(response.data[0].friendlist);
+        const oldfriends = response.data[0].friendlist.map(old => old.userid);
+        const Friendafterslice = friendtemp.filter(
+          f => !oldfriends.includes(f.id)
+        );
+        setfriends(
+          Friendafterslice.map(f => {
+            return { ...f, select: false };
+          })
+        );
       } catch (error) {
-        console.error('cannot create admin', error);
+        console.error('cannot create', error);
       }
     }
     fetchData();
@@ -33,15 +60,37 @@ const Step2 = ({ currentstep, onsubmit, id }) => {
   };
   const addfriendlist = id => {
     const newfriend = friend.map(f => {
-      if (f.userid === id) {
+      if (f.id === id) {
         return { ...f, select: !f.select };
       }
       return f;
     });
     setfriends(newfriend);
   };
-  const sendstateback = () => {
-    onsubmit(friend.filter(f => f.select));
+  const sendstateback = async () => {
+    const modifySchema = friend
+      .filter(f => f.select)
+      .map(ff => {
+        return { name: ff.username, userid: ff.id, select: false };
+      });
+    try {
+      const response = await axios.put(`/friend/${friendid}`, {
+        userid: id,
+        friendlist: [...oldfriend, ...modifySchema]
+      });
+      console.log(response);
+      if (response.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Save Complete',
+          timer: 2000
+        }).then(result => {
+          history.push('/');
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
   const renderFrindList = () => {
     return friend.map((fie, index) => {
@@ -65,7 +114,7 @@ const Step2 = ({ currentstep, onsubmit, id }) => {
                   ? 'ui circular icon button positive'
                   : 'ui circular icon button red'
               }
-              onClick={e => addfriendlist(fie.userid)}
+              onClick={e => addfriendlist(fie.id)}
             >
               <i
                 aria-hidden="true"
@@ -76,22 +125,18 @@ const Step2 = ({ currentstep, onsubmit, id }) => {
           </List.Content>
           <Image avatar src="https://picsum.photos/200/300" />
           <List.Content>
-            <List.Header>{fie.name}</List.Header>
+            <List.Header>{fie.username}</List.Header>
           </List.Content>
         </List.Item>
       );
     });
   };
-  if (currentstep !== 2) {
-    // Prop: The current step
-    return null;
-  }
   return (
-    <>
+    <Navbar>
       <Container>
         <Row style={{ marginTop: '5%' }}>
           <Col>
-            <h1 style={{ color: 'white' }}>เลือกเพื่อน</h1>
+            <h1 style={{ color: 'white' }}>เพิ่มเพื่อน</h1>
           </Col>
         </Row>
         <Row>
@@ -143,14 +188,14 @@ const Step2 = ({ currentstep, onsubmit, id }) => {
           disabled={friend.filter(f => f.select).length === 0}
           onClick={e => sendstateback(e)}
         >
-          ต่อไป
+          เพิ่ม
         </Button>
       </Segment>
-    </>
+    </Navbar>
   );
 };
 
 const mapStateToprops = state => {
   return { id: state.auth.id, username: state.auth.username };
 };
-export default connect(mapStateToprops, null)(Step2);
+export default connect(mapStateToprops, null)(AddFriend);

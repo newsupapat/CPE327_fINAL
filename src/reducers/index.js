@@ -15,7 +15,16 @@ const UserReducer = (state = INTIAL_STATE, action) => {
       return state;
   }
 };
+const UserMoneyReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'MONEY_UPDATE':
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
 
 export default combineReducers({
-  auth: UserReducer
+  auth: UserReducer,
+  money: UserMoneyReducer
 });
