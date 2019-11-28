@@ -6,6 +6,12 @@ export const UpdateUser = User => {
     payload: User
   };
 };
+export const UpdateMoney = money => {
+  return {
+    type: 'MONEY_UPDATE',
+    payload: money
+  };
+};
 export const DestroyUser = () => (dispatch, getState) => {
   Cookies.remove('_user');
   dispatch({ type: 'DESTROY_UPDATE' });

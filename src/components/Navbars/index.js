@@ -34,18 +34,15 @@ class NavbarGlobal extends React.Component {
             style={{ backgroundColor: '#0B7B52' }}
           >
             <Container>
-              <NavbarBrand
-                className="mr-lg-5"
-                to="/"
-                tag={Link}
-                style={{ fontSize: '1.5rem' }}
-              >
-                <img
-                  alt="..."
-                  src={require('asset/image/logo.png')}
-                  style={{ margin: '5%' }}
-                />
-                Billy
+              <NavbarBrand className="mr-lg-5" style={{ fontSize: '1.5rem' }}>
+                <Link to="/" style={{ color: 'white' }}>
+                  <img
+                    alt="..."
+                    src={require('asset/image/logo.png')}
+                    style={{ margin: '5%' }}
+                  />
+                  Billy
+                </Link>
               </NavbarBrand>
               <button className="navbar-toggler" id="navbar_global">
                 <p

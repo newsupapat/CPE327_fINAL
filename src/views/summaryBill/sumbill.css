@@ -40,3 +40,6 @@ h1{
     background : #13882e none;
     color : #fff;
 }
+::-webkit-scrollbar {
+    display: none;
+    }

@@ -1,5 +1,18 @@
 
-ui.tabular.menu .item:hover {
+.picturelabel { 
+    padding: 30px 30px;
+    background: silver;
+  }
+  .picturelabel > input[type=file] {
+      display: none;
+  }
+  .tabbar {
+      text-decoration: underline;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+  }
+  ui.tabular.menu .item:hover {
     background-color: white;
     color: rgba(0,0,0,.8);
 }
@@ -27,6 +40,17 @@ ui.tabular.menu .item:hover {
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 0.5rem;
+}
+
+.ui.tabular.menu .item {
+    background : #DFF3EC;
+    border-radius: 0.28rem 0.28rem 0 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid transparent;
+    padding: .92857143em 1.42857143em;
+    color: rgba(0,0,0,.87);
 }
 
 .profile{
@@ -76,6 +100,15 @@ ui.tabular.menu .item:hover {
 .ui.relaxed.list:not(.horizontal)>.item:not(:first-child) {
     padding-top: 1rem;
 }
-::-webkit-scrollbar {
-    display: none;
-    }
+
+/* .ui.relaxed.list:not(.horizontal)>.item:last-child {
+    padding-bottom: 20rem;
+    padding-top: 1rem;
+} */
+
+.ui.bottom.attached.segment{
+    padding-bottom: 20rem;
+}
+.cards::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}

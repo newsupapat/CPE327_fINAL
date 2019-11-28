@@ -100,6 +100,14 @@ const Reg = Loadable({
     </CenterDiv>
   )
 });
+const Addfriend = Loadable({
+  loader: () => import('./views/Friend/index'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
 const App = () => {
   return (
     <Router history={history}>
@@ -135,16 +143,17 @@ const App = () => {
           exact
           component={props => <NotiPlanner {...props} />}
         />
-        <Route
+        <PrivateRoute
           path="/SummaryBills/:billid"
           exact
           component={props => <SummaryBills {...props} />}
         />
-        <Route
-          path="/reg"
+        <PrivateRoute
+          path="/addfriend"
           exact
-          component={props => <Reg {...props} />}
+          component={props => <Addfriend {...props} />}
         />
+        <Route path="/reg" exact component={props => <Reg {...props} />} />
         {/* <PrivateRoute path="/login" exact component={LoginPage} /> */}
         <Route path="/login" exact component={LoginPage} />
       </Switch>
