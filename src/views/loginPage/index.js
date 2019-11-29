@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Grid, Header,Modal } from 'semantic-ui-react';
+import { Button, Form, Grid, Header,Modal, Image } from 'semantic-ui-react';
 import history from '../../history.js';
 import Cookies from 'js-cookie';
 //Redux
@@ -7,6 +7,8 @@ import { UpdateUser } from 'actions';
 import { connect } from 'react-redux';
 import axios from 'axios.js';
 import { Link } from 'react-router-dom';
+import './login.css';
+
 class LoginForm extends React.Component {
   state = {
     errorPaths: [],
@@ -52,11 +54,13 @@ class LoginForm extends React.Component {
     const { errorPaths } = this.state;
     return (
       <>
+      {/* <Image src= 'src\asset\image\logo.png' size = 'medium'></Image> */}
+      
       <Grid
         textAlign='center'
         style={{
           height: '105vh',
-          background: `url(${require('asset/image/wallpaper.png')})`,
+          background: `url(${require('asset/image/BackgroundHome.png')})`,
           backgroundPosition: 'center center',
           backgroundSize: '100% 100%',
           transform: 'none',
@@ -64,8 +68,15 @@ class LoginForm extends React.Component {
         className='team'
         verticalAlign='middle'
       >
+        
         <Grid.Column style={{ maxWidth: 500 }}>
+        <Image
+          src={require('asset/image/logo.png')}
+          size="medium"
+          style={{ position: 'absolute',top:'5%',left:'14%' }}
+        />
           <Header
+           
             as='h5'
             color='white'
             textAlign='center'
@@ -73,6 +84,7 @@ class LoginForm extends React.Component {
               transform: 'none',
               marginTop: '50%',
               color: 'white',
+              fontSize: '18px'
             }}
           >
             Make spliting bill simple.
@@ -87,11 +99,12 @@ class LoginForm extends React.Component {
                 marginTop: '7%',
                 marginBottom: '7%',
                 color: 'white',
+                fontFamily: 'Prompt'
               }}
             >
               เข้าสู่ระบบ
             </Header>
-            <Form size='large'>
+            <Form size='large' >
               <Form.Input
                 fluid
                 placeholder='ชื่อผู้ใช้'
@@ -99,7 +112,7 @@ class LoginForm extends React.Component {
                 name='username'
                 error={
                   errorPaths.includes('username') ? (
-                    { content: 'Please enter your username', pointing: 'below' }
+                    { content: 'กรุณาใส่ชื่อผู้ใช้', pointing: 'below' }
                   ) : null
                 }
               />
@@ -110,7 +123,7 @@ class LoginForm extends React.Component {
                 name='password'
                 error={
                   errorPaths.includes('password') ? (
-                    { content: 'Please enter your password', pointing: 'below' }
+                    { content: 'กรุณาใส่รหัสผ่าน', pointing: 'below' }
                   ) : null
                 }
               />
@@ -118,9 +131,13 @@ class LoginForm extends React.Component {
                 <p
                   style={{
                     color: 'white',
-                    fontSize: '20px',
+                    fontSize: '16px',
                     marginTop: '2%',
-                   backgroundColor:'red'
+                    marginBottom: '5%',
+                    backgroundColor:'red',
+                    borderRadius: '4px',
+                    opacity:'0.5',
+                    padding:'0 0.5em 0 0.5em'
                   }}
                 >
                  username หรือ password ไม่ถูกต้อง
@@ -132,20 +149,10 @@ class LoginForm extends React.Component {
                     textDecoration: 'underline',
                     color: 'white',
                     fontSize: '16px',
-                    marginBottom: '2%',
+                    marginBottom: '10%',
                   }}
                 >
                   ลืมรหัสผ่าน ?
-                    ยังไม่มีบัญชีผู้ใช้งาน?{' '}
-                    <Link to="reg" style={{color : 'white'}}>
-                    <span
-                    style={{
-                        textDecoration: 'underline'
-                    }}
-                    >
-                    สมัครใช้งาน
-                    </span>
-                    </Link>
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -153,6 +160,7 @@ class LoginForm extends React.Component {
                   size='large'
                   style={{ marginRight: '0px' }}
                   onClick={this.handleClick}
+                  inverted color ='yellow'
                 >
                   เข้าสู่ระบบ
                 </Button>

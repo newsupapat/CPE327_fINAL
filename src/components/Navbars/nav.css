@@ -1,3 +1,9 @@
 .header_text{
     font-size:1rem
 }
+
+.ui.image img, .ui.image svg {
+    max-width:45%;
+    display:block;
+    height:auto;
+}

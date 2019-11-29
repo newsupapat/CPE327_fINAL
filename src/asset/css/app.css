@@ -1,6 +1,8 @@
 body{
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Prompt', sans-serif;
     background-image: url('../image/BackgroundHome.png');
     background-position: center top;
     background-size: 100% 120%;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Prompt&display=swap');
