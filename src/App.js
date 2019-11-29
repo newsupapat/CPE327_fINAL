@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from './history';
 import Loadable from 'react-loadable';
 import styled from 'styled-components';
+import 'asset/css/semantic.css';
 import 'antd/dist/antd.css';
 import 'asset/vendor/nucleo/css/nucleo.css';
 import 'asset/scss/argon-design-system-react.scss';
