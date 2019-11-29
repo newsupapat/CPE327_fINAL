@@ -18,6 +18,7 @@ import billsum from './sumbill.css';
 const SummaryBill = ({ match, id }) => {
   const [Owner, setOwner] = useState(null);
   const [modal, setModal] = useState(false);
+  const [sumup, setsumup] = useState({});
 
   const toggle = () => setModal(!modal);
   useEffect(() => {
@@ -25,6 +26,22 @@ const SummaryBill = ({ match, id }) => {
       try {
         console.log(id);
         const response = await axios.get(`/Bill/${match.params.billid}`);
+        const sum = {};
+        console.log(response.data);
+        response.data.detail.map(de => {
+          de.friend.map(fri => {
+            if (sum[fri.name]) {
+              console.log(de.price);
+              sum[fri.name] = sum[fri.name] + de.price / de.friend.length;
+            } else {
+              console.log(sum[fri.name]);
+              sum[fri.name] = de.price / de.friend.length;
+            }
+          });
+        });
+        console.log(sum);
+        setsumup(sum);
+
         setOwner(response.data);
       } catch (error) {
         console.error(error);
@@ -49,7 +66,6 @@ const SummaryBill = ({ match, id }) => {
                 <Row style={{ margin: 0, width: '100%', overflow: 'scroll' }}>
                   {d.friend &&
                     d.friend.map(f => {
-                      console.log(f.userid, id);
                       return (
                         <Col>
                           <Segment
@@ -126,35 +142,22 @@ const SummaryBill = ({ match, id }) => {
             </Row>
             <Row>
               <Col></Col>
-              <Col xs={7} style={{ textAlign: 'left' }}>
+              <Col xs={8} style={{ textAlign: 'left' }}>
                 <List selection verticalAlign="middle">
-                  <List.Item>
-                    <Image
-                      avatar
-                      src="https://react.semantic-ui.com/images/avatar/small/helen.jpg"
-                    />
-                    <List.Content>
-                      <List.Header>Helen ยอด 460</List.Header>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <Image
-                      avatar
-                      src="https://react.semantic-ui.com/images/avatar/small/christian.jpg"
-                    />
-                    <List.Content>
-                      <List.Header>Christian ยอด 460</List.Header>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <Image
-                      avatar
-                      src="https://react.semantic-ui.com/images/avatar/small/daniel.jpg"
-                    />
-                    <List.Content>
-                      <List.Header>Daniel ยอด 460 </List.Header>
-                    </List.Content>
-                  </List.Item>
+                  {sumup &&
+                    Object.keys(sumup).map(s => {
+                      return (
+                        <List.Item>
+                          <Image
+                            avatar
+                            src="https://react.semantic-ui.com/images/avatar/small/helen.jpg"
+                          />
+                          <List.Content>
+                            <List.Header>{`${s} ยอด ${sumup[s]}`}</List.Header>
+                          </List.Content>
+                        </List.Item>
+                      );
+                    })}
                 </List>
               </Col>
             </Row>

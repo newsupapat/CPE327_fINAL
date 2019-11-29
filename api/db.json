@@ -16,6 +16,21 @@
               "name": "new"
             }
           ]
+        },
+        {
+          "name": "ไก่ย่าง",
+          "price": 125,
+          "friend": [
+            {
+              "userid": 2,
+              "name": "tangkwa",
+              "select": false
+            },
+            {
+              "userid": 1,
+              "name": "new"
+            }
+          ]
         }
       ],
       "name": "ไก่ทอดไง",
