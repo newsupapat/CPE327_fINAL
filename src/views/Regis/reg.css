@@ -1,19 +1,37 @@
-.ui.grid>.row
+h1
 {
-    padding-left: 2rem;
-}
-.ui.grid>.column:not(.row), .ui.grid>.row>.column
-{
-    width: 35%;
+    color: white;
+    padding-top: 2rem;
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
 }
 
-span
+h3
+{
+    padding-top: 5rem;
+    color: white;
+}
+
+h5
 {
     color: white;
 }
 
-.ui.button
+input
 {
-    margin:0 .25em 0 4.5em;
-    width : 9em;
+    width: 50%;
+}
+
+
+.ant-form-item-label > label
+{
+    color:white;
+    font-size: 1.3em;
+}
+
+.ui.inverted.yellow.button, .ui.inverted.yellow.buttons .button
+{
+    margin-left: 13.5rem;
+    width: 40%;
+    margin-bottom : 1rem;
 }

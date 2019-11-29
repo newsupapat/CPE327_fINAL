@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Grid, Header } from 'semantic-ui-react';
+import { Button, Form, Grid, Header,Modal } from 'semantic-ui-react';
 import history from '../../history.js';
 import Cookies from 'js-cookie';
 //Redux
@@ -51,6 +51,7 @@ class LoginForm extends React.Component {
   render() {
     const { errorPaths } = this.state;
     return (
+      <>
       <Grid
         textAlign='center'
         style={{
@@ -165,17 +166,31 @@ class LoginForm extends React.Component {
               }}
             >
               ยังไม่มีบัญชีผู้ใช้งาน?{' '}
-              <span
-                style={{
-                  textDecoration: 'underline',
-                }}
-              >
-                สมัครใช้งาน
-              </span>
+              <Link to="reg" style={{color : 'white'}}>
+                <span
+                  style={{
+                    textDecoration: 'underline',
+                  }}
+                >
+                  สมัครใช้งาน
+                </span>
+              </Link>
             </p>
           </div>
         </Grid.Column>
       </Grid>
+      <Modal
+      defaultOpen
+      style={{
+        height: '30%',
+        margin: '20rem 0 0 40rem'
+      }}
+      size ='mini'
+      header='Warning!'
+      content='Please enter inspect mode to view in mobile size before visit our website'
+      actions={[{ key: 'done', content: 'Got it!', positive: true }]}
+  />
+  </>
     );
   }
 }

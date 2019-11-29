@@ -1,78 +1,155 @@
 import React from "react";
+import { Container, Button } from "semantic-ui-react";
+import reg from "./reg.css";
 import {
-  Grid,
-   Container,
-   Input,
-   Button
-} from "semantic-ui-react";
-import reg from "./reg.css"
+  Form,
+  Input,
+  Tooltip,
+  Icon,
+  Cascader,
+  Select,
+  Row,
+  Col,
+  Checkbox,
+  AutoComplete
+} from "antd";
 
-export default class Homepage extends React.Component {
+class Regis extends React.Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        console.log("Received values of form: ", values);
+      }
+    });
+  };
+
+  state = {
+    confirmDirty: false,
+  };
+  validateToNextPassword = (rule, value, callback) => {
+    const { form } = this.props;
+    if (value && this.state.confirmDirty) {
+      form.validateFields(["confirm"], { force: true });
+    }
+    callback();
+  };
+
+  handleConfirmBlur = e => {
+    const { value } = e.target;
+    this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+  };
+
+  compareToFirstPassword = (rule, value, callback) => {
+    const { form } = this.props;
+    if (value && value !== form.getFieldValue("password")) {
+      callback("โปรดระบุรหัสผ่านให้ตรงกัน");
+    } else {
+      callback();
+    }
+  };
+
+  validatePhone = (rule,value, callback) =>{
+    if(value.length===10)
+    {
+        callback();
+    } else {
+        callback("โปรดระบุเบอร์โทรศัพท์ให้ถูกต้อง");
+    }
+  }
+
   render() {
+
+    const { getFieldDecorator } = this.props.form;
+
     return (
-        <Container>
-            <Grid>
-                <Grid.Row style={{'padding-top' : '2rem',
-                                    'padding-bottom' : '0rem'}}>
-                    <h1 style={{color:'white'}}>Billy</h1>
-                </Grid.Row>
-                <Grid.Row style={{'padding-top' : '0rem'}}>
-                    <h5 style={{color:'white'}}>Make Splitting Bill Simple</h5>
-                </Grid.Row>
-                <Grid.Row style={{'padding-top' : '2.5rem'}}>
-                    <h3 style={{color:'white'}}>สมัครสมาชิก</h3>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column style={{'padding-left':'0rem'}}>
-                        <span>ชื่อผู้ใช้</span>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Input placeholder='ระบุชื่อผู้ใช้' />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column style={{'padding-left':'0rem'}}>
-                        <span>รหัสผ่าน</span>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Input type='password' placeholder='ระบุรหัสผ่าน' />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column style={{'padding-left':'0rem'}}>
-                        <span>ยืนยันรหัสผ่าน</span>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Input type='password' placeholder='ระบุรหัสผ่านอีกครั้ง' />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column style={{'padding-left':'0rem'}}>
-                        <span>อีเมล</span>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Input placeholder='Someone@example.com' />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column style={{'padding-left':'0rem'}}>
-                        <span>เบอร์โทรศัพท์</span>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Input placeholder='081-234-5678' />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column style={{'padding-left':'0rem'}}>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Button inverted color='yellow'>
-                            สมัครสมาชิก
-                        </Button>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+      <Container>
+        <div>
+          <h1>Billy</h1>
+          <h3>สมัครสมาชิก</h3>
+        </div>
+
+        {/* form */}
+
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Item label="ชื่อผู้ใช้">
+            {getFieldDecorator("name", {
+              rules: [
+                {
+                  required: true,
+                  message: "กรุณาระบุชื่อผู้ใช้",
+                  whitespace: true
+                }
+              ]
+            })(<Input />)}
+          </Form.Item>
+
+          <Form.Item label="รหัสผ่าน">
+            {getFieldDecorator("password", {
+              rules: [
+                {
+                  required: true,
+                  message: "กรุณาระบุรหัสผ่าน"
+                },
+                {
+                  validator: this.validateToNextPassword
+                }
+              ]
+            })(<Input.Password visibilityToggle={false}/>)}
+          </Form.Item>
+
+          <Form.Item label="ยืนยันรหัสผ่าน">
+            {getFieldDecorator("confirm", {
+              rules: [
+                {
+                  required: true,
+                  message: "กรุณายืนยันรหัสผ่าน"
+                },
+                {
+                  validator: this.compareToFirstPassword
+                }
+              ]
+            })(<Input.Password visibilityToggle={false} onBlur={this.handleConfirmBlur} />)}
+          </Form.Item>
+
+          <Form.Item label="อีเมล">
+            {getFieldDecorator("email", {
+              rules: [
+                {
+                  type: "email",
+                  message: "อีเมลไม่ถูกต้อง"
+                },
+                {
+                  required: true,
+                  message: "กรุณาระบุอีเมล"
+                }
+              ]
+            })(<Input />)}
+          </Form.Item>
+
+          <Form.Item label="เบอร์โทรศัพท์">
+            {getFieldDecorator("phone", {
+              rules: [
+                { required: true, },
+                {
+                    validator: this.validatePhone
+                }
+              ],
+              validateTrigger:['onBlur']
+            })(
+              <Input type="number" style={{ width: "100%" }} />
+            )}
+          </Form.Item>
+
+          <Button inverted color="yellow" type="submit">
+            สมัครสมาชิก
+          </Button>
+        </Form>
       </Container>
     );
   }
 }
+
+const WrapperdForm = Form.create()(Regis);
+
+export default WrapperdForm;
