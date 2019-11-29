@@ -74,6 +74,14 @@ const BillDetail = Loadable({
     </CenterDiv>
   )
 });
+const GroupDetail = Loadable({
+  loader: () => import('./views/GroupDetail'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
 
 const NotiPlanner = Loadable({
   loader: () => import('./views/NotiPlanner'),
@@ -131,6 +139,11 @@ const App = () => {
           path="/billdetail"
           exact
           component={props => <BillDetail {...props} />}
+        />
+        <PrivateRoute
+          path="/groupdetail"
+          exact
+          component={props => <GroupDetail {...props} />}
         />
         <PrivateRoute
           path="/addbill"
