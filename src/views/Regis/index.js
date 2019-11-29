@@ -4,15 +4,7 @@ import { Image } from 'semantic-ui-react';
 import reg from "./reg.css";
 import {
   Form,
-  Input,
-  Tooltip,
-  Icon,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  AutoComplete
+  Input
 } from "antd";
 import axios from 'axios.js'
 import Swal from 'sweetalert2';
