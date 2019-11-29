@@ -16,9 +16,10 @@ import {
   Col,
   UncontrolledTooltip
 } from 'reactstrap';
+import { Image } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { DestroyUser } from 'actions/index';
-
+import nav from './nav.css';
 class NavbarGlobal extends React.Component {
   componentDidMount() {}
 
@@ -35,14 +36,12 @@ class NavbarGlobal extends React.Component {
           >
             <Container>
               <NavbarBrand className="mr-lg-5" style={{ fontSize: '1.5rem' }}>
-                <Link to="/" style={{ color: 'white' }}>
-                  <img
-                    alt="..."
-                    src={require('asset/image/logo.png')}
-                    style={{ margin: '5%' }}
-                  />
-                  Billy
-                </Link>
+                <Image
+                  src={require('asset/image/logo.png')}
+                  as="a"
+                  size="small"
+                  href="/"
+                />
               </NavbarBrand>
               <button className="navbar-toggler" id="navbar_global">
                 <p

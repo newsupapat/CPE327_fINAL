@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Grid, Header,Modal } from 'semantic-ui-react';
+import { Button, Form, Grid, Header,Modal, Image } from 'semantic-ui-react';
 import history from '../../history.js';
 import Cookies from 'js-cookie';
 //Redux
@@ -53,11 +53,13 @@ class LoginForm extends React.Component {
     const { errorPaths } = this.state;
     return (
       <>
+      {/* <Image src= 'src\asset\image\logo.png' size = 'medium'></Image> */}
+      
       <Grid
         textAlign='center'
         style={{
           height: '105vh',
-          background: `url(${require('asset/image/wallpaper.png')})`,
+          background: `url(${require('asset/image/BackgroundHome.png')})`,
           backgroundPosition: 'center center',
           backgroundSize: '100% 100%',
           transform: 'none',
@@ -65,8 +67,15 @@ class LoginForm extends React.Component {
         className='team'
         verticalAlign='middle'
       >
+        
         <Grid.Column style={{ maxWidth: 500 }}>
+        <Image
+          src={require('asset/image/logo.png')}
+          size="medium"
+          style={{ position: 'absolute',top:'5%',left:'14%' }}
+        />
           <Header
+           
             as='h5'
             color='white'
             textAlign='center'
