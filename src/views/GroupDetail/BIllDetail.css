@@ -6,14 +6,13 @@ h2, .h2 {
     font-size: 3rem;
     margin: 1rem 3rem;
     color: white;
-    text-align:end;
 }
 
 
 h3, .h3 {
     font-size: 2.5rem;
     margin-top: 1rem;
-    color: black;
+    color: #01B875;
 }
 
 .ui.red.button{
@@ -97,9 +96,4 @@ h3, .h3 {
     display: flex;
     margin-bottom: 0.7rem;
     flex-wrap: wrap;
-}
-
-.ui.medium.image, .ui.medium.images .image, .ui.medium.images img, .ui.medium.images svg
-{
-    left:2rem;
 }
