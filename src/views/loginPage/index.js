@@ -7,6 +7,7 @@ import { UpdateUser } from 'actions';
 import { connect } from 'react-redux';
 import axios from 'axios.js';
 import { Link } from 'react-router-dom';
+import './login.css';
 
 class LoginForm extends React.Component {
   state = {
@@ -83,6 +84,7 @@ class LoginForm extends React.Component {
               transform: 'none',
               marginTop: '50%',
               color: 'white',
+              fontSize: '18px'
             }}
           >
             Make spliting bill simple.
@@ -97,11 +99,12 @@ class LoginForm extends React.Component {
                 marginTop: '7%',
                 marginBottom: '7%',
                 color: 'white',
+                fontFamily: 'Prompt'
               }}
             >
               เข้าสู่ระบบ
             </Header>
-            <Form size='large'>
+            <Form size='large' >
               <Form.Input
                 fluid
                 placeholder='ชื่อผู้ใช้'
@@ -109,7 +112,7 @@ class LoginForm extends React.Component {
                 name='username'
                 error={
                   errorPaths.includes('username') ? (
-                    { content: 'Please enter your username', pointing: 'below' }
+                    { content: 'กรุณาใส่ชื่อผู้ใช้', pointing: 'below' }
                   ) : null
                 }
               />
@@ -120,17 +123,17 @@ class LoginForm extends React.Component {
                 name='password'
                 error={
                   errorPaths.includes('password') ? (
-                    { content: 'Please enter your password', pointing: 'below' }
+                    { content: 'กรุณาใส่รหัสผ่าน', pointing: 'below' }
                   ) : null
                 }
               />
               {this.state.invalidUser && <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <p
                   style={{
-                    color: 'white',
-                    fontSize: '20px',
+                    color: 'red',
+                    fontSize: '12px',
                     marginTop: '2%',
-                   backgroundColor:'red'
+                    marginBottom: '5%'
                   }}
                 >
                  username หรือ password ไม่ถูกต้อง
@@ -142,20 +145,10 @@ class LoginForm extends React.Component {
                     textDecoration: 'underline',
                     color: 'white',
                     fontSize: '16px',
-                    marginBottom: '2%',
+                    marginBottom: '10%',
                   }}
                 >
                   ลืมรหัสผ่าน ?
-                    ยังไม่มีบัญชีผู้ใช้งาน?{' '}
-                    <Link to="reg" style={{color : 'white'}}>
-                    <span
-                    style={{
-                        textDecoration: 'underline'
-                    }}
-                    >
-                    สมัครใช้งาน
-                    </span>
-                    </Link>
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -163,6 +156,7 @@ class LoginForm extends React.Component {
                   size='large'
                   style={{ marginRight: '0px' }}
                   onClick={this.handleClick}
+                  inverted color ='yellow'
                 >
                   เข้าสู่ระบบ
                 </Button>
