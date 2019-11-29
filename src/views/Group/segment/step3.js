@@ -107,6 +107,7 @@ const Step3 = ({ currentstep, onsubmit, value }) => {
                 placeholder="0"
                 label={{ basic: true, content: 'บาท' }}
                 labelPosition="right"
+                type="number"
                 name="pool"
                 value={pool}
                 onChange={e => setpool(e.target.value)}
