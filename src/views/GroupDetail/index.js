@@ -19,7 +19,7 @@ import { connect } from 'react-redux';
 import { UpdateMoney } from 'actions/index';
 import axios from 'axios.js'
 
-class Bill extends React.Component {
+class Group extends React.Component {
   state = {
     activeItem: 'Debter',
     group:null

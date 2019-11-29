@@ -133,14 +133,11 @@ const App = () => {
           component={props => <BillDetail {...props} />}
         />
         <PrivateRoute
-<<<<<<< HEAD
           path="/groupdetail/:groupid"
           exact
           component={props => <GroupDetail {...props} />}
         />
         <PrivateRoute
-=======
->>>>>>> parent of 6cc89a5... Group Detail
           path="/addbill"
           exact
           component={props => <Bill {...props} />}
