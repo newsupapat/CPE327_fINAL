@@ -130,10 +130,14 @@ class LoginForm extends React.Component {
               {this.state.invalidUser && <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <p
                   style={{
-                    color: 'red',
-                    fontSize: '12px',
+                    color: 'white',
+                    fontSize: '16px',
                     marginTop: '2%',
-                    marginBottom: '5%'
+                    marginBottom: '5%',
+                    backgroundColor:'red',
+                    borderRadius: '4px',
+                    opacity:'0.5',
+                    padding:'0 0.5em 0 0.5em'
                   }}
                 >
                  username หรือ password ไม่ถูกต้อง

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Button } from "semantic-ui-react";
+import { Image } from 'semantic-ui-react';
 import reg from "./reg.css";
 import {
   Form,
@@ -65,7 +66,11 @@ class Regis extends React.Component {
     return (
       <Container>
         <div>
-          <h1>Billy</h1>
+        <Image
+          src={require('asset/image/logo.png')}
+          size="small"
+          style={{ position: 'relative',marginTop:'10%',marginBottom:'10%',marginLeft:'-5%' }}
+        />
           <h3>สมัครสมาชิก</h3>
         </div>
 

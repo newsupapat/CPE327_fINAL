@@ -111,6 +111,36 @@
       "amount": 330,
       "billowner": 4,
       "id": 2
+    },
+    {
+      "detail": [
+        {
+          "name": "เสื้อ",
+          "price": 120,
+          "friend": [
+            {
+              "name": "kat",
+              "userid": 4,
+              "select": false
+            },
+            {
+              "userid": 2,
+              "name": "tangkwa"
+            },
+            {
+              "name": "rose",
+              "userid": 3,
+              "select": false
+            }
+          ]
+        }
+      ],
+      "name": "เสื้อละลายทรัพย์",
+      "flag": "เสื้อผ้า",
+      "date": "29/10/2019",
+      "amount": 120,
+      "billowner": 2,
+      "id": 4
     }
   ],
   "groups": [

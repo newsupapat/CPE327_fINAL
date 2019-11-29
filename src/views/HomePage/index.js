@@ -60,6 +60,7 @@ class Homepage extends React.Component {
         money.allOwner = owner.reduce((all, dep) => {
           return dep.amount + all;
         }, 0)
+        console.log(money.allOwner,owner)
         this.setState({allOwner:money.allOwner})
         this.props.UpdateMoney(money)
       }
