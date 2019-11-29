@@ -88,6 +88,7 @@ class Homepage extends React.Component {
       return this.state.groups.map((g, index) => {
         return (
           <List.Item key={index}>
+            
             <List.Content floated='right' style={{ paddingRight: '1rem' }}>
               <Header as='h4' textAlign='right'>
                 เงินกองกลาง
@@ -98,7 +99,9 @@ class Homepage extends React.Component {
             </List.Content>
             <Image avatar src='https://picsum.photos/200/300' />
             <List.Content>
+            <Link to={`/groupdetail/${g.id}`}>
               <List.Header>{g.name}</List.Header>
+            </Link>
             </List.Content>
           </List.Item>
         );

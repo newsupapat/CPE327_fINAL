@@ -21,137 +21,21 @@ import axios from 'axios.js'
 
 class Bill extends React.Component {
   state = {
-    activeItem: 'Debter'
+    activeItem: 'Debter',
+    group:null
   };
   async componentDidMount() {
     try {
-      let response = await axios.get(`/Bill`);
-      let money = {}
+      console.log(this.props.match)
+      let response = await axios.get(`/groups/${this.props.match.params.groupid}`);
       if (response.status === 200) {
-        let owner = response.data.filter((o) => o.billowner === this.props.id)
-        money.Owner = owner
-        let depter = this.finddepter(
-          response.data.filter((o) => o.billowner !== this.props.id)
-        );
-        money.Debter =depter.filter((d) => d.depter !== 0)
-        money.alldepter = depter.reduce((all, dep) => {
-          return dep.depter + all;
-        }, 0)
-        money.allOwner = owner.reduce((all, dep) => {
-          return dep.amount + all;
-        }, 0)
-        this.props.UpdateMoney(money)
+        console.log(response.data)
+        this.setState({group:response.data})
       }
     } catch (error) {
       console.error(error);
     }
   }
-  finddepter(filterOwner) {
-    let response = filterOwner.map((depter) => {
-      return {
-        ...depter,
-        depter: depter.detail.reduce((sumup, detail) => {
-          if (detail.friend.some((f) => f.userid === this.props.id)) {
-            return sumup + detail.price / detail.friend.length;
-          }
-          return sumup;
-        }, 0)
-      };
-    });
-    return response;
-  }
-  renderlist = () => {
-    if (this.state.activeItem === 'Owner') {
-      return this.props.Owner && this.props.Owner.map((g) => {
-        return (
-          <Link to={`/summaryBills/${g.id}`}>
-            <Card.Group style={{width: '100%'}}>
-              <Label color={g.flag === 'อาหาร' ? 'purple' : 'orange'} ribbon>
-                {g.flag}
-              </Label>
-              <Card
-                fluid
-                style={{ backgroundColor: '#F5F5F5' }}
-                //href="src\views\loginPage\index.js"
-                textAlight='center'
-              >
-                <Card.Content>
-                  <Card.Header>{g.name}</Card.Header>
-                  <Header
-                    as='h6'
-                    textAlign='left'
-                    style={{ color: 'lightgray', marginTop: '0rem' }}
-                  >
-                    {g.date}
-                  </Header>
-                  <Header
-                    as='h4'
-                    color='green'
-                    textAlign='right'
-                    className='cardDescriptionTop'
-                  >
-                    ติดเงินคุณ
-                  </Header>
-                  <Header
-                    as='h4'
-                    color='green'
-                    textAlign='right'
-                    className='cardDescriptionBottom'
-                  >
-                    {g.amount} บาท
-                  </Header>
-                </Card.Content>
-              </Card>
-            </Card.Group>
-          </Link>
-        );
-      });
-    } else {
-      return this.props.Debter && this.props.Debter.map((g) => {
-        return (
-          <Card.Group>
-            <Label color={g.flag === 'อาหาร' ? 'purple' : 'orange'} ribbon>
-              {g.flag}
-            </Label>
-            <Card
-              fluid
-              style={{ backgroundColor: '#F5F5F5',width: '100%' }}
-              //href="src\views\loginPage\index.js"
-              textAlight='center'
-            >
-              <Card.Content>
-                <Card.Header>{g.name}</Card.Header>
-                <Header
-                  as='h6'
-                  textAlign='left'
-                  style={{ color: 'lightgray', marginTop: '0rem' }}
-                >
-                  {g.date}
-                </Header>
-                <Header
-                  as='h4'
-                  color={'red'}
-                  textAlign='right'
-                  className='cardDescriptionTop'
-                >
-                  คุณติดเงิน
-                </Header>
-                <Header
-                  as='h4'
-                  color={g.type === 'ติดเงินคุณ' ? 'green' : 'red'}
-                  textAlign='right'
-                  className='cardDescriptionBottom'
-                >
-                  {g.depter} บาท
-                </Header>
-              </Card.Content>
-            </Card>
-          </Card.Group>
-        );
-      });
-    }
-  };
-
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
@@ -171,7 +55,7 @@ class Bill extends React.Component {
             right: '2rem',
           }}
         />
-        <h2 style={{fontSize:'30px'}}>Group Name</h2>
+        <h2 style={{fontSize:'30px'}}>{this.state.group && this.state.group.name}</h2>
         <Message
           style={{
             maxWidth: '80%',
@@ -208,7 +92,6 @@ class Bill extends React.Component {
         </Menu>
         <Segment attached='bottom' style={{ height: '60vh' }}>
           <List divided relaxed verticalAlign='middle'>
-            {this.renderlist()}
           </List>
         </Segment>
       </Navbar>

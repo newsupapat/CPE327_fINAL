@@ -141,7 +141,7 @@ const App = () => {
           component={props => <BillDetail {...props} />}
         />
         <PrivateRoute
-          path="/groupdetail"
+          path="/groupdetail/:groupid"
           exact
           component={props => <GroupDetail {...props} />}
         />
