@@ -12,12 +12,12 @@ import {
   Card,
   Label,
 } from 'semantic-ui-react';
-import './GroupDetail.css';
 import { Link } from 'react-router-dom';
 import profile from 'asset/image/ProfilePict.png';
 import { connect } from 'react-redux';
 import { UpdateMoney } from 'actions/index';
 import axios from 'axios.js'
+import './BIllDetail.css'
 
 class Group extends React.Component {
   state = {

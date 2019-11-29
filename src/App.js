@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from './history';
 import Loadable from 'react-loadable';
 import styled from 'styled-components';
+import 'semantic-ui-css/semantic.min.css';
 import 'asset/css/semantic.css';
 import 'antd/dist/antd.css';
 import 'asset/vendor/nucleo/css/nucleo.css';
@@ -52,6 +53,14 @@ const NotiPage = Loadable({
 });
 const GroupPage = Loadable({
   loader: () => import('./views/Group'),
+  loading: () => (
+    <CenterDiv>
+      <Loading />
+    </CenterDiv>
+  )
+});
+const GroupDetail = Loadable({
+  loader: () => import('./views/GroupDetail'),
   loading: () => (
     <CenterDiv>
       <Loading />
