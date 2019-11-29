@@ -108,4 +108,4 @@ const mapStateToprops = (state) => {
     allOwner: state.money.allOwner,
   };
 };
-export default connect(mapStateToprops, {UpdateMoney})(Bill);
+export default connect(mapStateToprops, {UpdateMoney})(Group);
