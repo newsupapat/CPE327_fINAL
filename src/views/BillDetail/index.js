@@ -16,17 +16,56 @@ import './BIllDetail.css';
 import { Link } from 'react-router-dom';
 import profile from 'asset/image/ProfilePict.png';
 import { connect } from 'react-redux';
+import { UpdateMoney } from 'actions/index';
+import axios from 'axios.js'
 
 class Bill extends React.Component {
   state = {
     activeItem: 'Debter'
   };
+  async componentDidMount() {
+    try {
+      let response = await axios.get(`/Bill`);
+      let money = {}
+      if (response.status === 200) {
+        let owner = response.data.filter((o) => o.billowner === this.props.id)
+        money.Owner = owner
+        let depter = this.finddepter(
+          response.data.filter((o) => o.billowner !== this.props.id)
+        );
+        money.Debter =depter.filter((d) => d.depter !== 0)
+        money.alldepter = depter.reduce((all, dep) => {
+          return dep.depter + all;
+        }, 0)
+        money.allOwner = owner.reduce((all, dep) => {
+          return dep.amount + all;
+        }, 0)
+        this.props.UpdateMoney(money)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  finddepter(filterOwner) {
+    let response = filterOwner.map((depter) => {
+      return {
+        ...depter,
+        depter: depter.detail.reduce((sumup, detail) => {
+          if (detail.friend.some((f) => f.userid === this.props.id)) {
+            return sumup + detail.price / detail.friend.length;
+          }
+          return sumup;
+        }, 0)
+      };
+    });
+    return response;
+  }
   renderlist = () => {
     if (this.state.activeItem === 'Owner') {
-      return this.props.Owner.map((g) => {
+      return this.props.Owner && this.props.Owner.map((g) => {
         return (
           <Link to={`/summaryBills/${g.id}`}>
-            <Card.Group>
+            <Card.Group style={{width: '100%'}}>
               <Label color={g.flag === 'อาหาร' ? 'purple' : 'orange'} ribbon>
                 {g.flag}
               </Label>
@@ -68,7 +107,7 @@ class Bill extends React.Component {
         );
       });
     } else {
-      return this.props.Debter.map((g) => {
+      return this.props.Debter && this.props.Debter.map((g) => {
         return (
           <Card.Group>
             <Label color={g.flag === 'อาหาร' ? 'purple' : 'orange'} ribbon>
@@ -76,7 +115,7 @@ class Bill extends React.Component {
             </Label>
             <Card
               fluid
-              style={{ backgroundColor: '#F5F5F5' }}
+              style={{ backgroundColor: '#F5F5F5',width: '100%' }}
               //href="src\views\loginPage\index.js"
               textAlight='center'
             >
@@ -201,4 +240,4 @@ const mapStateToprops = (state) => {
     allOwner: state.money.allOwner,
   };
 };
-export default connect(mapStateToprops, null)(Bill);
+export default connect(mapStateToprops, {UpdateMoney})(Bill);

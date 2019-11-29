@@ -13,13 +13,46 @@ import {
   Checkbox,
   AutoComplete
 } from "antd";
+import axios from 'axios.js'
+import Swal from 'sweetalert2';
+import history from 'history.js'
+import { async } from "q";
+
 
 class Regis extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
+    this.props.form.validateFieldsAndScroll(async(err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        let id
+        try {
+          let response = await axios.post('/users',{username:values.name,password:values.password})
+          if(response.status === 201){
+            console.log(response)
+            id = response.data.id
+          }
+        } catch (error) {
+          console.error(error)
+        }
+        try {
+          let response = await axios.post('/friend',{
+            "userid": id,
+            "friendlist": []
+          })
+          if(response.status === 201 && id){
+            console.log(response)
+            Swal.fire({
+              icon: 'success',
+              title: 'Save Complete',
+              timer: 2000,
+            }).then((result) => {
+              history.push('/login');
+            });
+          }
+        } catch (error) {
+          console.error(error)
+        }
       }
     });
   };

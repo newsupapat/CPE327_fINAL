@@ -111,6 +111,31 @@
       "amount": 330,
       "billowner": 4,
       "id": 2
+    },
+    {
+      "detail": [
+        {
+          "name": "ก๋วยเตี่ยว",
+          "price": 100,
+          "friend": [
+            {
+              "userid": 3,
+              "name": "rose"
+            },
+            {
+              "name": "tangkwa",
+              "userid": 2,
+              "select": false
+            }
+          ]
+        }
+      ],
+      "name": "กินข้าว",
+      "flag": "อาหาร",
+      "date": "29/10/2019",
+      "amount": 100,
+      "billowner": 3,
+      "id": 3
     }
   ],
   "groups": [
@@ -209,7 +234,23 @@
     },
     {
       "userid": 3,
-      "friendlist": [],
+      "friendlist": [
+        {
+          "name": "new",
+          "userid": 1,
+          "select": false
+        },
+        {
+          "name": "tangkwa",
+          "userid": 2,
+          "select": false
+        },
+        {
+          "name": "kat",
+          "userid": 4,
+          "select": false
+        }
+      ],
       "id": 3
     },
     {
@@ -232,6 +273,32 @@
         }
       ],
       "id": 4
+    },
+    {
+      "userid": 5,
+      "friendlist": [
+        {
+          "name": "new",
+          "userid": 1,
+          "select": false
+        },
+        {
+          "name": "tangkwa",
+          "userid": 2,
+          "select": false
+        },
+        {
+          "name": "rose",
+          "userid": 3,
+          "select": false
+        },
+        {
+          "name": "kat",
+          "userid": 4,
+          "select": false
+        }
+      ],
+      "id": 5
     }
   ],
   "users": [
@@ -254,6 +321,11 @@
       "id": 4,
       "username": "kat",
       "password": "123456"
+    },
+    {
+      "username": "new2",
+      "password": "123456",
+      "id": 5
     }
   ]
 }

@@ -25,6 +25,9 @@ import logo from "asset/image/logo.png";
 import profile from "asset/image/ProfilePict.png";
 import { TimePicker } from "antd";
 import moment from "moment";
+import { connect } from 'react-redux';
+import Swal from "sweetalert2";
+import history from 'history.js'
 
 const frequency = [
   { key: "d", text: "วัน", value: "day" },
@@ -42,20 +45,33 @@ const number = [
 
 const format = "HH:mm";
 
-export default class Bill extends React.Component {
-  state = { activeItem: "Owner", Owner: [] };
+class Bill extends React.Component {
+  state = { activeItem: "Owner", Owner: [],allOwner:0,showWireframe:false,check:false };
   async componentDidMount() {
     try {
-      let response = await axios.get("/Owner");
+      const response = await axios.get(`/Bill?billowner=${this.props.id}`);
+      console.log(response)
       if (response.status === 200) {
-        console.log(response);
         this.setState({
           Owner: response.data
         });
+        let allOwner = response.data.reduce((all, dep) => {
+          return dep.amount + all;
+        }, 0)
+        this.setState({allOwner})
       }
     } catch (error) {
       console.error(error);
     }
+  }
+  submit = () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Save Complete',
+      timer: 2000,
+    }).then((result) => {
+      history.push('/billdetail');
+    });
   }
 
   renderlist = () => {
@@ -84,21 +100,26 @@ export default class Bill extends React.Component {
               </Header>
             </Card.Content>
           </Card>
-          <Checkbox style={{ margin: "2.8rem 0 0 1.3rem" }} />
+          <Checkbox style={{ margin: "2.8rem 0 0 1.3rem" }} onChange={this.handleclick}/>
         </Card.Group>
       );
     });
   };
 
-  handleWireframe = (e, { checked }) =>
+  handleWireframe = (e, { checked }) =>{
+    console.log(checked)
     this.setState({ showWireframe: checked });
+  }
+  handleclick = (e, { checked }) =>{
+    this.setState({ check: checked });
+  }
 
   render() {
     const { activeItem } = this.state;
     const { calculations, showWireframe } = this.state;
     return (
       <Navbar>
-        <h2>Loman</h2>
+        <h2>{this.props.username}</h2>
         <h2 style={{ marginTop: "-1rem", fontSize: "2rem" }}>ทวงเงิน</h2>
         <Image
           src={profile}
@@ -120,7 +141,7 @@ export default class Bill extends React.Component {
           }}
         >
           <Message.Header>ติดเงินรวม</Message.Header>
-          <h3>1,000.00</h3>
+          <h3>{this.state.allOwner}</h3>
           <p style={{ margin: "2.5rem 0.5rem" }}>บาท</p>
         </Message>
         <Segment attached="bottom">
@@ -180,6 +201,8 @@ export default class Bill extends React.Component {
               marginBottom: "1rem",
               display: "block"
             }}
+            disabled={!this.state.check}
+            onClick={this.submit}
           >
             ทวงเงิน
           </Button>
@@ -201,3 +224,7 @@ export default class Bill extends React.Component {
     );
   }
 }
+const mapStateToprops = state => {
+  return { id: state.auth.id, username: state.auth.username,allowner:state.money.allOwner };
+};
+export default connect(mapStateToprops, null)(Bill);

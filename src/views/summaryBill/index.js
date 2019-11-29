@@ -55,6 +55,7 @@ const SummaryBill = ({ match, id }) => {
                           <Segment
                             inverted
                             color={f.userid === id ? 'orange' : ''}
+                            style={{ minHeight: '8%' }}
                           >
                             <Image
                               avatar
