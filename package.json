@@ -7,7 +7,7 @@
     "axios": "^0.19.0",
     "concurrently": "^5.0.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "formik": "^2.0.6",
     "headroom.js": "^0.10.3",
     "history": "^4.10.1",
